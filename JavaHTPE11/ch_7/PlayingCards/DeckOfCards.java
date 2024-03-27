@@ -43,6 +43,5 @@ public class DeckOfCards {
             return null; // return null to indicate that all Cards were dealt
         }
     }
-
-
+    
 }

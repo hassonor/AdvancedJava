@@ -1,4 +1,5 @@
-package JavaHTPE11.ch_9.example_1;
+package JavaHTPE11.ch_9.ex_3;
+
 
 public class BasePlusCommissionEmployeeTest {
     public static void main(String[] args) {

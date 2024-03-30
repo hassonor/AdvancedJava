@@ -1,6 +1,4 @@
-package JavaHTPE11.ch_9.example_3;
-
-import JavaHTPE11.ch_9.example_2.CommissionEmployee;
+package JavaHTPE11.ch_10.ex_1;
 
 public class BasePlusCommissionEmployee extends CommissionEmployee {
     private double baseSalary;

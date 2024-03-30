@@ -1,4 +1,4 @@
-package JavaHTPE11.ch_9.example_1;
+package JavaHTPE11.ch_10.ex_1;
 
 public class CommissionEmployee {
     private final String firstName;
@@ -57,16 +57,16 @@ public class CommissionEmployee {
     }
 
     public double earnings() {
-        return commissionRate * grossSales;
+        return getCommissionRate() * getGrossSales();
     }
 
     @Override
     public String toString() {
         return String.format("%s: %s %s%n%s: %s%n%s: %.2f%n%s: %.2f",
-                "commission employee", firstName, lastName,
-                "social security number", socialSecurityNumber,
-                "gross sales", grossSales,
-                "commission rate", commissionRate);
+                "commission employee", getFirstName(), getLastName(),
+                "social security number", getSocialSecurityNumber(),
+                "gross sales", getGrossSales(),
+                "commission rate", getCommissionRate());
     }
 
 }

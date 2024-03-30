@@ -1,4 +1,4 @@
-package JavaHTPE11.ch_9.example_2;
+package JavaHTPE11.ch_9.ex_2;
 
 public class CommissionEmployee {
     protected final String firstName;

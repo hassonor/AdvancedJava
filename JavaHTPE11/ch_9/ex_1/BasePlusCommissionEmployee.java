@@ -1,4 +1,4 @@
-package JavaHTPE11.ch_9.example_1;
+package JavaHTPE11.ch_9.ex_1;
 
 public class BasePlusCommissionEmployee {
     private final String firstName;

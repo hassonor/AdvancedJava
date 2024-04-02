@@ -15,6 +15,8 @@ public class Main {
         arr[1] = new Mammal("someMammal");
         arr[2] = new HuntingDog("Sunny");
         for (Animal currentAnimal : arr) {
+            if (currentAnimal instanceof HuntingDog)
+                ((HuntingDog) currentAnimal).hunt();
             currentAnimal.move();
         }
 

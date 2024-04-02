@@ -13,4 +13,8 @@ public class Dog extends Mammal {
         System.out.println("Woof");
     }
 
+    public String toString() {
+        return super.toString() + " Dog toString()";
+    }
+
 }

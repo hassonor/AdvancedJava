@@ -10,6 +10,14 @@ public class Main {
         a.move();
         b.move();
 
+        Animal[] arr = new Animal[3];
+        arr[0] = new Cat("Kitti");
+        arr[1] = new Mammal("someMammal");
+        arr[2] = new HuntingDog("Sunny");
+        for (Animal currentAnimal : arr) {
+            currentAnimal.move();
+        }
+
         // Dog c = new Cat("Gingi"); // Error
         // Dog d = new Animal("Test"); // Error
         // Cat f = new Dog("Test"); // Error

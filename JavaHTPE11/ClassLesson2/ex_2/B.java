@@ -11,6 +11,6 @@ public class B extends A {
 //        a._x1 = 0; // No access it's private
         a._x2 = 0;
         a._x3 = 0;
-        a._x4 = 0;
+        a._x4 = 0; // Same package
     }
 }

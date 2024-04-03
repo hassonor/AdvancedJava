@@ -1,4 +1,4 @@
-package JavaHTPE11.ch_11_exception_handling.divideByZeroWithoutException;
+package JavaHTPE11.ch_11_exception_handling;
 
 import java.util.Scanner;
 

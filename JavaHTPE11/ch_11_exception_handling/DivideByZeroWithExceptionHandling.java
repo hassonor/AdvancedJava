@@ -24,7 +24,7 @@ public class DivideByZeroWithExceptionHandling {
             } catch (InputMismatchException inputMismatchException) {
                 // Consume the invalid input
                 System.out.println("\nException: " + inputMismatchException);
-                scanner.nextLine();
+                scanner.nextLine(); // discard input so user can try again
                 System.out.print("You must enter integers. Please try again.\n");
             } catch (ArithmeticException arithmeticException) {
                 System.out.println("\nException: " + arithmeticException);

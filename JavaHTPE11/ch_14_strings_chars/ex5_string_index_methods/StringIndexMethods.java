@@ -1,4 +1,4 @@
-package JavaHTPE11.ch_14_strings_chars.ex_5_string_index_methods;
+package JavaHTPE11.ch_14_strings_chars.ex5_string_index_methods;
 
 public class StringIndexMethods {
     public static void main(String[] args) {

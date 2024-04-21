@@ -19,6 +19,5 @@ public class StringValueOf {
         System.out.println("float = " + String.valueOf(floatValue));
         System.out.println("double = " + String.valueOf(doubleValue));
         System.out.println("Object = " + String.valueOf(objectRef));
-
     }
 }

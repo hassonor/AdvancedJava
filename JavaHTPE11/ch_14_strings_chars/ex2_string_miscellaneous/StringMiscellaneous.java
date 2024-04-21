@@ -1,4 +1,4 @@
-package JavaHTPE11.ch_14_strings_chars.ex_2_string_miscellaneous;
+package JavaHTPE11.ch_14_strings_chars.ex2_string_miscellaneous;
 
 public class StringMiscellaneous {
     public static void main(String[] args) {

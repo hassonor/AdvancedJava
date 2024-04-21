@@ -1,4 +1,4 @@
-package JavaHTPE11.ch_14_strings_chars.ex_StringBuilderChars;
+package JavaHTPE11.ch_14_strings_chars.ex12_StringBuilderChars;
 
 public class StringBuilderChars {
     public static void main(String[] args) {

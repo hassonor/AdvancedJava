@@ -91,7 +91,6 @@ public class CreditInquiry {
         } else if ((option == MenuOption.ZERO_BALANCE) && (balance == 0)) {
             return true;
         }
-
         return false;
     }
 }

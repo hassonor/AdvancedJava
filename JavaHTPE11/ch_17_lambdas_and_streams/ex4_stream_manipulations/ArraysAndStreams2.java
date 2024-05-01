@@ -22,6 +22,5 @@ public class ArraysAndStreams2 {
         List<String> stringLessThanNSortedDescending = Arrays.stream(strings).
                 filter(s -> s.compareToIgnoreCase("n") < 0).sorted(String.CASE_INSENSITIVE_ORDER.reversed()).toList();
         System.out.println("Strings less than n sorted descending: " + stringLessThanNSortedDescending);
-
     }
 }

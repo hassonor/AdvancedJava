@@ -13,7 +13,15 @@ public class StreamFilterMapReduce {
         System.out.println("Sum of the triples of event ints from 2 though 10 is: " + total);
 
         // sum thr triple of the even integers from 2 through 10
-        int total2 = IntStream.rangeClosed(2, 10).filter(x -> x % 2 == 0).map(x -> x * 3).sum();
+        int total2 = IntStream.rangeClosed(1, 10)
+                .filter(x -> {
+                    System.out.println("filter: " + x);
+                    return x % 2 == 0;
+                })
+                .map(x -> {
+                    System.out.println("map: " + x);
+                    return x * 3;
+                }).sum();
         System.out.println("Sum of the triples of event ints from 2 though 10 is: " + total2);
     }
 }

@@ -1,4 +1,4 @@
-package JavaHTPE11.ch_21_custom_generic_data_structures.ex1_generic_list_class;
+package JavaHTPE11.ch_21_custom_generic_data_structures.ex1_generic_list_class.list;
 
 import java.util.NoSuchElementException;
 
@@ -125,7 +125,6 @@ public class List<E> {
             System.out.printf("%s ", current.data);
             current = current.nextNode;
         }
-
         System.out.println();
     }
 

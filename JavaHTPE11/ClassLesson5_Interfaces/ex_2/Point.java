@@ -37,7 +37,7 @@ public class Point implements Shape {
 
     // calculate area
     public double area() {
-        return 0.0;
+        return 4.0;
     }
 
     // calculate volume

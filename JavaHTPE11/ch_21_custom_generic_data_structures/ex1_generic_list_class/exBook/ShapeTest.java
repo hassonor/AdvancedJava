@@ -10,10 +10,12 @@ public class ShapeTest {
         Circle c = new Circle();
         Point p = new Point(1, 2);
 
-        Shape[] shapes = {c, p};
+        Circle[] shapes = {c, c};
 
 
         System.out.println(max(shapes));
+
+        Shape c2 = max(shapes);
 
         Integer[] arr = {1, 2, 3, 4};
         Integer lastInt = last(arr);

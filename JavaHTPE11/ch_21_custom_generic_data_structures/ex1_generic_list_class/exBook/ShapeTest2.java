@@ -5,6 +5,7 @@ public class ShapeTest2 {
         Shape[] shapes = {new Circle(), new Square()};
         Shape ans = max(shapes);
         System.out.println(ans);
+        
     }
 
     private static <T extends Shape> T max(T[] shapes) {

@@ -1,4 +1,4 @@
-package JavaHTPE11.ch_21_custom_generic_data_structures.ex1_generic_list_class.exBook;
+package JavaHTPE11.ch_21_custom_generic_data_structures.ex1_generic_list_class.exBook.ex2;
 
 import java.util.EmptyStackException;
 
@@ -33,4 +33,28 @@ public class Stack<E> {
     public int size() {
         return top + 1;
     }
+
+    public static <E> Stack<E> copy(Stack<E> stack) {
+        int size = stack.size();
+        System.out.println("size= " + size);
+        Stack<E> temp = new Stack<E>(size);
+        Stack<E> stack2 = new Stack<E>(size);
+        E element;
+
+        for (int i = 0; i < size; i++) {
+            element = stack.pop();
+            System.out.printf("%s ", element);
+            temp.push(element); // push element onto temp stack
+        }
+
+        for (int i = 0; i < size; i++) {
+            element = temp.pop();
+            System.out.printf("%s ", element);
+            stack.push(element); // push element back onto stack
+            stack2.push(element); // push element back onto copy stack
+        }
+        return stack2;
+    }
+
+
 }

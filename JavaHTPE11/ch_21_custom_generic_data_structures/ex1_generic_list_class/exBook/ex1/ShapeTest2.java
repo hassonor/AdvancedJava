@@ -1,11 +1,11 @@
-package JavaHTPE11.ch_21_custom_generic_data_structures.ex1_generic_list_class.exBook;
+package JavaHTPE11.ch_21_custom_generic_data_structures.ex1_generic_list_class.exBook.ex1;
 
 public class ShapeTest2 {
     public static void main(String[] args) {
         Shape[] shapes = {new Circle(), new Square()};
         Shape ans = max(shapes);
         System.out.println(ans);
-        
+
     }
 
     private static <T extends Shape> T max(T[] shapes) {

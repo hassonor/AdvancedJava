@@ -1,5 +1,7 @@
 package JavaHTPE11.ch_21_custom_generic_data_structures.ex1_generic_list_class.exBook.ex2;
 
+import JavaHTPE11.ch_21_custom_generic_data_structures.ex1_generic_list_class.exBook.ex1.Shape;
+
 import java.util.EmptyStackException;
 
 public class Stack<E> {
@@ -54,6 +56,10 @@ public class Stack<E> {
             stack2.push(element); // push element back onto copy stack
         }
         return stack2;
+    }
+
+    public static void drawShapes(Stack<? extends Shape> shapeStack) {
+        System.out.println("Some action on drawShapes...");
     }
 
 

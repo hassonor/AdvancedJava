@@ -1,4 +1,4 @@
-package JavaHTPE11.ch_23_concurrency.ex5_synchronized_producer_consumer_with_blokingbuffer;
+package JavaHTPE11.ch_23_concurrency.ex5_producer_consumer_with_blockingbuffer;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

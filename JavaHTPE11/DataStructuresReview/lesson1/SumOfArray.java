@@ -7,7 +7,6 @@ public class SumOfArray {
         System.out.println(sumArray(arr));
     }
 
-
     // This method calculates the sum of all elements in an array.
     // Time Complexity - O(N): The method iterates through each element of the array exactly once.
     // Space Complexity - O(1): The method uses a constant amount of extra space (an integer variable).

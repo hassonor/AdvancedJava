@@ -28,7 +28,7 @@ public class CalculatePostfix {
      * @throws IllegalArgumentException if the expression is invalid
      */
     private static double calcPostFix(String str) {
-        Stack<Double> stack = new Stack<>();
+        StackImp<Double> stack = new StackImp<>();
 
         for (int i = 0; i < str.length(); i++) {
             char c = str.charAt(i);

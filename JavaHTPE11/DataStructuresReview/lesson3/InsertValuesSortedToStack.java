@@ -14,7 +14,7 @@ public class InsertValuesSortedToStack {
      */
     public static void main(String[] args) {
         Stack<Integer> sortedStack = new Stack<>();
-        int[] arr = {4, 12, 3, 5, 8, 0, -4, 100, 9};
+        int[] arr = {4, 12, 3, 5, 8, 4, 0, -4, 100, 9};
         sortIntStack(sortedStack, arr);
 
         System.out.println(sortedStack);
@@ -38,7 +38,7 @@ public class InsertValuesSortedToStack {
             if (stack.isEmpty()) {
                 stack.push(arr[i]);
             } else {
-                while (!stack.isEmpty() && stack.peek() >= arr[i]) {
+                while (!stack.isEmpty() && stack.peek() > arr[i]) {
                     helperStack.push(stack.pop());
                 }
                 stack.push(arr[i]);

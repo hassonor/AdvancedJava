@@ -26,5 +26,20 @@ public class ListTest {
 
         // Final state of the list
         list.print();  // Expected: Empty Integer List
+
+        // Re-insert elements for find test
+        list.insertAtFront(5);
+        list.insertAtBack(6);
+        list.insertAtFront(7);
+        list.insertAtBack(8);
+
+        // Find existing elements
+        System.out.println("Finding 5: " + (list.find(5) != null ? "Found" : "Not Found"));  // Expected: Found
+        System.out.println("Finding 8: " + (list.find(8) != null ? "Found" : "Not Found"));  // Expected: Found
+        System.out.println("Finding 7: " + (list.find(7) != null ? "Found" : "Not Found"));  // Expected: Found
+        System.out.println("Finding 6: " + (list.find(6) != null ? "Found" : "Not Found"));  // Expected: Found
+
+        // Find non-existing element
+        System.out.println("Finding 10: " + (list.find(10) != null ? "Found" : "Not Found"));  // Expected: Not Found
     }
 }

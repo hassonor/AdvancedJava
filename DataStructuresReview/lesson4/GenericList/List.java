@@ -109,6 +109,26 @@ public class List<E> {
     }
 
     /**
+     * Searches for the specified item in the list and returns the node containing it.
+     *
+     * @param item the item to find in the list
+     * @return the ListNode containing the item, or null if the item is not found
+     */
+    public ListNode<E> find(E item) {
+        if (isEmpty()) return null;
+        ListNode<E> current = firstNode;
+        while (current != null) {
+            if (current.data == item) {
+                return current;
+            }
+            current = current.nextNode;
+        }
+        return null;
+
+    }
+
+
+    /**
      * Prints the elements of the list.
      */
     public void print() {

@@ -129,7 +129,7 @@ public class ListTest {
         System.out.println("Removing 10: " + list.remove(10));  // Expected: false
         list.print();  // Expected: The Integer List is: 9 11 13 12 4
 
-        System.out.println("Removing 6: " + list.remove(12));  // Expected: true
-        list.print();  // Expected: The Integer List is: 9 11 13 4
+        System.out.println("Removing 13: " + list.remove(13));  // Expected: true
+        list.print();  // Expected: The Integer List is: 9 11 12 4
     }
 }

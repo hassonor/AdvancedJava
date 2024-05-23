@@ -93,10 +93,7 @@ public class List<E> {
 
         // Special case: removing the first node
         if (firstNode.data.equals(itemForRemove)) {
-            firstNode = firstNode.nextNode;
-            if (firstNode == null) {
-                lastNode = null;
-            }
+            removeFromFront();
             return true;
         }
         while (current.nextNode != null) {

@@ -196,4 +196,8 @@ public class List<E> {
 
         System.out.println();
     }
+
+    public E top() {
+        return firstNode.data;
+    }
 }

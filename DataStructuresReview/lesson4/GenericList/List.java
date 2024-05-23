@@ -30,6 +30,33 @@ public class List<E> {
     }
 
     /**
+     * Inserts an item into the list before the specified item.
+     *
+     * @param beforeItem the item before which the new item will be inserted
+     * @param insertItem the item to insert
+     * @throws NoSuchElementException if the list is empty or the specified beforeItem is not found
+     */
+    public void insert(E beforeItem, E insertItem) {
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        } else {
+            ListNode<E> current = firstNode;
+            boolean found = false;
+            while (current != null) {
+                if (current.data == beforeItem) {
+                    current.nextNode = new ListNode<E>(insertItem, current.nextNode);
+                    found = true;
+                    break;
+                }
+                current = current.nextNode;
+            }
+            if (!found) {
+                throw new NoSuchElementException("The specified item was not found in the list.");
+            }
+        }
+    }
+
+    /**
      * Inserts an item at the front of the list.
      *
      * @param insertItem the item to insert

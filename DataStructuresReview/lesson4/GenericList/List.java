@@ -1,5 +1,6 @@
 package DataStructuresReview.lesson4.GenericList;
 
+import java.util.HashSet;
 import java.util.NoSuchElementException;
 
 /**
@@ -199,5 +200,22 @@ public class List<E> {
 
     public E top() {
         return firstNode.data;
+    }
+
+    public void removeDuplicates() {
+        if (isEmpty()) return;
+        HashSet<E> seen = new HashSet<E>();
+        ListNode<E> current = firstNode;
+        ListNode<E> previous = null;
+
+        while (current != null) {
+            if (seen.contains(current.data)) {
+                previous.nextNode = current.nextNode;
+            } else {
+                seen.add(current.data);
+                previous = current;
+            }
+            current = current.nextNode;
+        }
     }
 }

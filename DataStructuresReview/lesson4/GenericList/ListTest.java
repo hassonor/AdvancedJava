@@ -1,7 +1,5 @@
 package DataStructuresReview.lesson4.GenericList;
 
-import java.util.NoSuchElementException;
-
 public class ListTest {
     public static void main(String[] args) {
         List<Integer> list = new List<>("Integer List");
@@ -100,7 +98,7 @@ public class ListTest {
         list.insertAtBack(12);
         list.print();
 
-        System.out.println("Inserting 5 at back");
+        System.out.println("Inserting 4 at back");
         list.insertAtBack(4);
         list.print();
 
@@ -130,6 +128,15 @@ public class ListTest {
         list.print();  // Expected: The Integer List is: 9 11 13 12 4
 
         System.out.println("Removing 13: " + list.remove(13));  // Expected: true
+        list.print();  // Expected: The Integer List is: 9 11 12 4
+
+        // Test removeDuplicates method
+        System.out.println("Testing removeDuplicates method:");
+        list.insertAtBack(9);
+        list.insertAtBack(11);
+        list.insertAtBack(12);
+        list.print();  // Expected: The Integer List is: 9 11 12 4 9 11 12
+        list.removeDuplicates();
         list.print();  // Expected: The Integer List is: 9 11 12 4
     }
 }

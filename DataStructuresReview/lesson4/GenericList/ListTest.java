@@ -105,13 +105,13 @@ public class ListTest {
         list.print();
 
         // Find existing elements
-        System.out.println("Finding 5: " + (list.find(5) != null ? "Found" : "Not Found"));  // Expected: Found
-        System.out.println("Finding 8: " + (list.find(8) != null ? "Found" : "Not Found"));  // Expected: Found
-        System.out.println("Finding 7: " + (list.find(7) != null ? "Found" : "Not Found"));  // Expected: Found
-        System.out.println("Finding 6: " + (list.find(6) != null ? "Found" : "Not Found"));  // Expected: Found
+        System.out.println("Finding 5: " + (list.find(5) ? "Found" : "Not Found"));  // Expected: Found
+        System.out.println("Finding 8: " + (list.find(8) ? "Found" : "Not Found"));  // Expected: Found
+        System.out.println("Finding 7: " + (list.find(7) ? "Found" : "Not Found"));  // Expected: Found
+        System.out.println("Finding 6: " + (list.find(6) ? "Found" : "Not Found"));  // Expected: Found
 
         // Find non-existing element
-        System.out.println("Finding 10: " + (list.find(10) != null ? "Found" : "Not Found"));  // Expected: Not Found
+        System.out.println("Finding 10: " + (list.find(10) ? "Found" : "Not Found"));  // Expected: Not Found
 
         // Test the remove method
         System.out.println("Removing 5: " + list.remove(5));  // Expected: true

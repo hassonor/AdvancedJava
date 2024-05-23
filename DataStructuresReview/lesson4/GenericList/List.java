@@ -86,7 +86,7 @@ public class List<E> {
      * @return true if the element was found and removed, false otherwise
      */
     public boolean remove(E itemForRemove) {
-        if (isEmpty()) {
+        if (isEmpty() || !find(itemForRemove)) {
             return false;
         }
         ListNode<E> current = firstNode;
@@ -96,16 +96,13 @@ public class List<E> {
             removeFromFront();
             return true;
         }
-        while (current.nextNode != null) {
-            if (current.nextNode.data.equals(itemForRemove)) {
-                current.nextNode = current.nextNode.nextNode;
-                if (current.nextNode == null)
-                    lastNode = current;
-                return true;
-            }
+        while (!current.nextNode.data.equals(itemForRemove)) {
             current = current.nextNode;
         }
-        return false;
+        current.nextNode = current.nextNode.nextNode;
+        if (current.nextNode == null)
+            lastNode = current;
+        return true;
     }
 
     /**
@@ -162,21 +159,21 @@ public class List<E> {
     }
 
     /**
-     * Searches for the specified item in the list and returns the node containing it.
+     * Searches for the specified item in the list and returns if exists.
      *
      * @param item the item to find in the list
-     * @return the ListNode containing the item, or null if the item is not found
+     * @return boolean true if found and otherwise false.
      */
-    public ListNode<E> find(E item) {
-        if (isEmpty()) return null;
+    public boolean find(E item) {
+        if (isEmpty()) return false;
         ListNode<E> current = firstNode;
         while (current != null) {
             if (current.data.equals(item)) {
-                return current;
+                return true;
             }
             current = current.nextNode;
         }
-        return null;
+        return false;
 
     }
 

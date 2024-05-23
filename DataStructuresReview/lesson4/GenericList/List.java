@@ -36,24 +36,21 @@ public class List<E> {
      * @param insertItem the item to insert
      * @throws NoSuchElementException if the list is empty or the specified beforeItem is not found
      */
-    public void insert(E beforeItem, E insertItem) {
+    public boolean insert(E beforeItem, E insertItem) {
         if (isEmpty()) {
-            throw new NoSuchElementException();
+            return false;
         } else {
             ListNode<E> current = firstNode;
-            boolean found = false;
             while (current != null) {
-                if (current.data == beforeItem) {
+                if (current.data.equals(beforeItem)) {
                     current.nextNode = new ListNode<E>(insertItem, current.nextNode);
-                    found = true;
-                    break;
+                    return true;
                 }
                 current = current.nextNode;
             }
-            if (!found) {
-                throw new NoSuchElementException("The specified item was not found in the list.");
-            }
         }
+
+        return false;
     }
 
     /**
@@ -80,6 +77,38 @@ public class List<E> {
         } else {
             lastNode = lastNode.nextNode = new ListNode<E>(insertItem);
         }
+    }
+
+    /**
+     * Removes the first occurrence of the specified element from the list.
+     *
+     * @param itemForRemove the element to be removed from the list
+     * @return true if the element was found and removed, false otherwise
+     */
+    public boolean remove(E itemForRemove) {
+        if (isEmpty()) {
+            return false;
+        }
+        ListNode<E> current = firstNode;
+
+        // Special case: removing the first node
+        if (firstNode.data.equals(itemForRemove)) {
+            firstNode = firstNode.nextNode;
+            if (firstNode == null) {
+                lastNode = null;
+            }
+            return true;
+        }
+        while (current.nextNode != null) {
+            if (current.nextNode.data.equals(itemForRemove)) {
+                current.nextNode = current.nextNode.nextNode;
+                if (current.nextNode == null)
+                    lastNode = current;
+                return true;
+            }
+            current = current.nextNode;
+        }
+        return false;
     }
 
     /**
@@ -145,7 +174,7 @@ public class List<E> {
         if (isEmpty()) return null;
         ListNode<E> current = firstNode;
         while (current != null) {
-            if (current.data == item) {
+            if (current.data.equals(item)) {
                 return current;
             }
             current = current.nextNode;

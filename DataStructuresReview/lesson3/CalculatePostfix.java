@@ -1,6 +1,4 @@
-package JavaHTPE11.DataStructuresReview.lesson3;
-
-import java.util.Stack;
+package DataStructuresReview.lesson3;
 
 public class CalculatePostfix {
     public static void main(String[] args) {

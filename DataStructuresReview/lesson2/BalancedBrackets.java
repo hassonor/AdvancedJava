@@ -1,4 +1,4 @@
-package JavaHTPE11.DataStructuresReview.lesson2;
+package DataStructuresReview.lesson2;
 
 
 import java.util.Stack;

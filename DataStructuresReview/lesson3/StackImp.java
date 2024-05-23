@@ -1,6 +1,5 @@
-package JavaHTPE11.DataStructuresReview.lesson3;
+package DataStructuresReview.lesson3;
 
-import java.util.Arrays;
 import java.util.EmptyStackException;
 
 /**

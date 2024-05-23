@@ -1,4 +1,4 @@
-package JavaHTPE11.DataStructuresReview.lesson1;
+package DataStructuresReview.lesson1;
 
 public class MaxElementOnSquareMatrix {
     public static void main(String[] args) {
@@ -32,7 +32,7 @@ public class MaxElementOnSquareMatrix {
 
         // Find and print the maximum element in the mixed order Integer matrix
         System.out.println("Max element in intMatrixMixed: " + maxElementsOnSquareMatrix(intMatrixMixed));
-        
+
     }
 
     /**

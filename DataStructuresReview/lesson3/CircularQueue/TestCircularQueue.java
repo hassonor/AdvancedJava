@@ -1,4 +1,4 @@
-package JavaHTPE11.DataStructuresReview.lesson3.CircularQueue;
+package DataStructuresReview.lesson3.CircularQueue;
 
 public class TestCircularQueue {
     public static void main(String[] args) {

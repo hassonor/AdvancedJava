@@ -1,4 +1,4 @@
-package JavaHTPE11.DataStructuresReview.lesson1;
+package DataStructuresReview.lesson1;
 
 public class ClosestPairDistance {
     public static void main(String[] args) {

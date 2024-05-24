@@ -218,4 +218,23 @@ public class List<E> {
             current = current.nextNode;
         }
     }
+
+    public void reverse() {
+        if (isEmpty() || firstNode.nextNode == null)
+            return;
+
+        ListNode<E> x = firstNode;
+        ListNode<E> y = firstNode.nextNode;
+        ListNode<E> z = firstNode.nextNode.nextNode;
+        firstNode.nextNode = null;
+
+        while (z != null) {
+            y.nextNode = x;
+            x = y;
+            y = z;
+            z = z.nextNode;
+        }
+        y.nextNode = x;
+        firstNode = y;
+    }
 }

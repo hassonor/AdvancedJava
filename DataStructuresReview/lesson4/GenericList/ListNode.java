@@ -22,6 +22,5 @@ public class ListNode<E> {
         return nextNode;
     }
 
-    ;
 
 }

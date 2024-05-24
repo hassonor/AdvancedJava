@@ -138,5 +138,10 @@ public class ListTest {
         list.print();  // Expected: The Integer List is: 9 11 12 4 9 11 12
         list.removeDuplicates();
         list.print();  // Expected: The Integer List is: 9 11 12 4
+
+        // Test reverse method
+        System.out.println("Testing reverse method:");
+        list.reverse();
+        list.print();  // Expected: The Integer List is: 4 12 11 9
     }
 }

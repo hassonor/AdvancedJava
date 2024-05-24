@@ -237,4 +237,16 @@ public class List<E> {
         y.nextNode = x;
         firstNode = y;
     }
+
+    public static <E> boolean compareList(List<E> listOne, List<E> listTwo) {
+        return compareNodes(listOne.firstNode, listTwo.firstNode);
+    }
+
+    private static <E> boolean compareNodes(ListNode<E> nodeOne, ListNode<E> nodeTwo) {
+        if (nodeOne == null && nodeTwo == null)
+            return true;
+        if (nodeOne == null || nodeTwo == null)
+            return false;
+        return nodeOne.data.equals(nodeTwo.data) && compareNodes(nodeOne.nextNode, nodeTwo.nextNode);
+    }
 }

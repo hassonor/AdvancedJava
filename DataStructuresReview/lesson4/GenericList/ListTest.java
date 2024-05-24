@@ -143,5 +143,30 @@ public class ListTest {
         System.out.println("Testing reverse method:");
         list.reverse();
         list.print();  // Expected: The Integer List is: 4 12 11 9
+
+        // Test compareList method
+        System.out.println("Testing compareList method:");
+
+        List<Integer> listOne = new List<>("List One");
+        List<Integer> listTwo = new List<>("List Two");
+
+        listOne.insertAtBack(1);
+        listOne.insertAtBack(2);
+        listOne.insertAtBack(3);
+
+        listTwo.insertAtBack(1);
+        listTwo.insertAtBack(2);
+        listTwo.insertAtBack(3);
+
+        System.out.println("Comparing List One and List Two: " + (List.compareList(listOne, listTwo) ? "Equal" : "Not Equal")); // Expected: Equal
+
+        listTwo.insertAtBack(4);
+        System.out.println("Comparing List One and List Two: " + (List.compareList(listOne, listTwo) ? "Equal" : "Not Equal")); // Expected: Not Equal
+
+        listOne.insertAtBack(4);
+        System.out.println("Comparing List One and List Two: " + (List.compareList(listOne, listTwo) ? "Equal" : "Not Equal")); // Expected: Equal
+
+        listTwo.removeFromFront();
+        System.out.println("Comparing List One and List Two: " + (List.compareList(listOne, listTwo) ? "Equal" : "Not Equal")); // Expected: Not Equal
     }
 }

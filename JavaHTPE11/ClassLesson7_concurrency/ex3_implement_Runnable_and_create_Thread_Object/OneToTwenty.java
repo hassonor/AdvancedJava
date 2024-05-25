@@ -1,4 +1,4 @@
-package JavaHTPE11.ClassLesson7_concurrency.ex3_implement_Runnable_adn_create_Thread_Object;
+package JavaHTPE11.ClassLesson7_concurrency.ex3_implement_Runnable_and_create_Thread_Object;
 
 public class OneToTwenty implements Runnable {
     private final int MAX = 20;

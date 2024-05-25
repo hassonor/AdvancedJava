@@ -1,4 +1,4 @@
-package JavaHTPE11.ClassLesson7_concurrency.ex4_join;
+package JavaHTPE11.ClassLesson7_concurrency.ex5_sleep;
 
 public class Main {
     public static void main(String[] args) {

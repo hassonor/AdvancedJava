@@ -17,6 +17,7 @@ public class Main {
         executorService.execute(first);
         executorService.execute(second);
         executorService.execute(third);
+        
 
         executorService.shutdown();
         executorService.awaitTermination(1, TimeUnit.MINUTES);

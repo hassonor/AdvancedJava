@@ -1,4 +1,4 @@
-package JavaHTPE11.ClassLesson7_concurrency;
+package JavaHTPE11.ClassLesson7_concurrency.ex1_extend_Thread;
 
 public class Main {
     public static void main(String[] args) {

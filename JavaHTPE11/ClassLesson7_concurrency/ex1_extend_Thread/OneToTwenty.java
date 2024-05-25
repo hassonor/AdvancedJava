@@ -1,4 +1,4 @@
-package JavaHTPE11.ClassLesson7_concurrency;
+package JavaHTPE11.ClassLesson7_concurrency.ex1_extend_Thread;
 
 public class OneToTwenty extends Thread {
     private final int MAX = 20;

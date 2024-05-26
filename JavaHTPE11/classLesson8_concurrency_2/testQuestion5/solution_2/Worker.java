@@ -1,6 +1,5 @@
 package JavaHTPE11.classLesson8_concurrency_2.testQuestion5.solution_2;
 
-import JavaHTPE11.classLesson8_concurrency_2.testQuestion5.solution_1.Work;
 
 public class Worker extends Thread {
     private int d;

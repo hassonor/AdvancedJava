@@ -13,6 +13,7 @@ public class Work {
     private Condition cond = lock.newCondition();
 
     public void stage1(int id) {
+        lock.lock();
         System.out.println("worker " + id + " finished stage 1");
         done++;
         try {

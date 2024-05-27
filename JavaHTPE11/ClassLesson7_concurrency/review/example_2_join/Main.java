@@ -1,4 +1,4 @@
-package JavaHTPE11.ClassLesson7_concurrency.review.example_2_join.re1;
+package JavaHTPE11.ClassLesson7_concurrency.review.example_2_join;
 
 public class Main {
     public static void main(String[] args) {

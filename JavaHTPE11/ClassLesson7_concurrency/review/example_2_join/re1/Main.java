@@ -12,13 +12,13 @@ public class Main {
 
 
         try {
-            one.join();
+            one.join(); // join stop the Thread that invoked this function in our case the "Main Thread"
             two.join();
             three.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        
+
         System.out.println("DONE");
     }
 }

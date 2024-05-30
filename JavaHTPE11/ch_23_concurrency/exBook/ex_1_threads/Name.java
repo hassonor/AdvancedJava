@@ -1,4 +1,4 @@
-package JavaHTPE11.ch_23_concurrency.exBook.ex_1_create_threads;
+package JavaHTPE11.ch_23_concurrency.exBook.ex_1_threads;
 
 public class Name extends Thread {
     static int counter = 0;

@@ -1,4 +1,4 @@
-package JavaHTPE11.ch_23_concurrency.exBook.ex_1_create_threads;
+package JavaHTPE11.ch_23_concurrency.exBook.ex_1_threads;
 
 public class Processes1 {
     public static void main(String[] args) {

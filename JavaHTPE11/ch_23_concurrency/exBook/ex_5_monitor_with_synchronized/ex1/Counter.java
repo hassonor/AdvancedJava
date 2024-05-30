@@ -1,4 +1,4 @@
-package JavaHTPE11.ch_23_concurrency.exBook.monitor_with_synchronized.ex1;
+package JavaHTPE11.ch_23_concurrency.exBook.ex_5_monitor_with_synchronized.ex1;
 
 public class Counter {
     private int count = 0;

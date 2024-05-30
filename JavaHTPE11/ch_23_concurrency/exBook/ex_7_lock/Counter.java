@@ -1,4 +1,4 @@
-package JavaHTPE11.ch_23_concurrency.exBook.ex7_lock;
+package JavaHTPE11.ch_23_concurrency.exBook.ex_7_lock;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;

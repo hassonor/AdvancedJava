@@ -23,7 +23,5 @@ public class SharedBufferTest {
 
         executorService.shutdown();
         executorService.awaitTermination(1, TimeUnit.MINUTES);
-
-
     }
 }

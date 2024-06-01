@@ -12,11 +12,6 @@ public class OneToTwenty extends Thread {
     public void run() {
         super.run();
         for (int i = 0; i < MAX; i++) {
-            try {
-                sleep(500);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
             System.out.println("Thread " + name + " :" + i);
         }
     }

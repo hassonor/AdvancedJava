@@ -10,14 +10,6 @@ public class Main {
         two.start();
         three.start();
 
-        try {
-            one.join();
-            two.join();
-            three.join();
-        } catch (InterruptedException e) {
-            System.out.println(e.getMessage());
-        }
-
         System.out.println("MAIN DONE");
     }
 }

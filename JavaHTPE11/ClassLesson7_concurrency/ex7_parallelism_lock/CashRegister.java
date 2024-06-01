@@ -9,7 +9,7 @@ public class CashRegister {
     private int sum = 0;
 
 
-    private void add(int toAdd) {
+    public void add(int toAdd) {
         lock.lock();
         try {
             sum += toAdd;
@@ -18,7 +18,7 @@ public class CashRegister {
         }
     }
 
-    private int get() {
+    public int get() {
         lock.lock();
         try {
             return sum;

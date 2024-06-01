@@ -3,11 +3,11 @@ package JavaHTPE11.ClassLesson7_concurrency.review_2.ex_4_paralleism_monitor_and
 public class CashRegister {
     private int sum = 0;
 
-    private synchronized void add(int toAdd) {
+    public synchronized void add(int toAdd) {
         sum += toAdd;
     }
 
-    private synchronized int get() {
+    public synchronized int get() {
         return sum;
     }
 }

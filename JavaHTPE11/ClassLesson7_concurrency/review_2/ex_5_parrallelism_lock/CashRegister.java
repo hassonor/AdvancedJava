@@ -8,7 +8,7 @@ public class CashRegister {
 
     private Lock lock = new ReentrantLock();
 
-    private void add(int toAdd) {
+    public void add(int toAdd) {
         lock.lock();
 
         try {
@@ -18,7 +18,7 @@ public class CashRegister {
         }
     }
 
-    private int get() {
+    public int get() {
         lock.lock();
         try {
             return sum;

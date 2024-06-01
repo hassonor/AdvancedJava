@@ -1,4 +1,4 @@
-package JavaHTPE11.ClassLesson7_concurrency.ex6_parallelism_monitor_and_synchronized;
+package JavaHTPE11.ClassLesson7_concurrency.review_2.ex_4_paralleism_monitor_and_synchronized;
 
 public class CashRegister {
     private int sum = 0;

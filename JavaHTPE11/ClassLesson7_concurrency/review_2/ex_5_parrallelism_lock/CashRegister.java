@@ -1,16 +1,16 @@
-package JavaHTPE11.ClassLesson7_concurrency.ex7_parallelism_lock;
+package JavaHTPE11.ClassLesson7_concurrency.review_2.ex_5_parrallelism_lock;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class CashRegister {
-
-    private Lock lock = new ReentrantLock();
     private int sum = 0;
 
+    private Lock lock = new ReentrantLock();
 
     private void add(int toAdd) {
         lock.lock();
+
         try {
             sum += toAdd;
         } finally {
@@ -25,5 +25,6 @@ public class CashRegister {
         } finally {
             lock.unlock();
         }
+
     }
 }

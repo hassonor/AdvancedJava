@@ -1,7 +1,7 @@
-package JavaHTPE11.classLesson10.testQuestion_generics.c;
+package JavaHTPE11.classLesson10.testQuestion3_generics.c;
 
-import JavaHTPE11.classLesson10.testQuestion_generics.a.IllegalDataException;
-import JavaHTPE11.classLesson10.testQuestion_generics.b.Student;
+import JavaHTPE11.classLesson10.testQuestion3_generics.a.IllegalDataException;
+import JavaHTPE11.classLesson10.testQuestion3_generics.b.Student;
 
 import java.util.ArrayList;
 import java.util.Random;

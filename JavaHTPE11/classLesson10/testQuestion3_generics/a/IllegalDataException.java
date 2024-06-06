@@ -1,4 +1,4 @@
-package JavaHTPE11.classLesson10.testQuestion_generics.a;
+package JavaHTPE11.classLesson10.testQuestion3_generics.a;
 
 public class IllegalDataException extends Exception{
     public IllegalDataException(){

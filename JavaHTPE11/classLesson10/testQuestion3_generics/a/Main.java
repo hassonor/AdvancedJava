@@ -1,4 +1,4 @@
-package JavaHTPE11.classLesson10.testQuestion_generics.a;
+package JavaHTPE11.classLesson10.testQuestion3_generics.a;
 
 import java.util.ArrayList;
 import java.util.Arrays;

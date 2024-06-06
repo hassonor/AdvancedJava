@@ -1,4 +1,4 @@
-package JavaHTPE11.classLesson10.testQuestion_generics.b;
+package JavaHTPE11.classLesson10.testQuestion3_generics.b;
 
 public class Student implements Comparable<Student>{
     private String name;

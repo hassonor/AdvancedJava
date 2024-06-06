@@ -14,12 +14,11 @@ public class C {
 
     public static void main(String[] args){
         int k;
-        C x = new C();
         // System.out.println(i); // Compilation Error!
         System.out.println(j);
-       //  System.out.println(k); // Compilation Error!
-        System.out.println(x.i);
-        System.out.println(x.j);
+//  System.out.println(k); // Compilation Error!
+//        System.out.println(x.i);
+        System.out.println(C.j);
 
     }
 }

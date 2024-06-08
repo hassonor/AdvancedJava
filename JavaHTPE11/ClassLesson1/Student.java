@@ -6,7 +6,6 @@ public class Student {
     private double _avg;
     private String _id;
     private static int _counter = 0;
-    //public static int _counter = 0 ;
 
 
     public Student(String _name, String _address, double _avg, String _id) {
@@ -62,14 +61,5 @@ public class Student {
     public static int get_counter() { //!!!!!
         return _counter;
     }
-//	public  int get_counter() {
-//		return (int) (_counter*_avg);
-//	}
-//	public  int get_counter() {
-//		return _counter;
-//	}
-//	public static void set_counter(int _counter) {
-//		Student._counter = _counter;
-//	}
 
 }

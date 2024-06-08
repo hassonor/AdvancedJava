@@ -10,25 +10,15 @@ public class FinalTest {
         return x;
     }
 
-    //        public void setX(int x) {
-//			this.x = x;
-//		}
     public FinalTest() {
         K = 666;
-        //this(44);
         int y1 = 99;
         int y2 = 88;
-//                if (y1>y2)
-//                	x=5;
-//                else
-//                	x=88;
+
     }
 
     public FinalTest(int x) {
-
         this();
-//			  K= 99;
-        // this.x=x;
     }
 
     public int getY() {

@@ -1,4 +1,4 @@
-package JavaHTPE11.ClassLesson2_oop_polymorphism.Polymorphism.example2;
+package JavaHTPE11.ClassLesson2_oop_polymorphism.polymorphism.example2;
 
 public class Poly {
     public static final int MAX_EMPLOYEES = 10;

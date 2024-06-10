@@ -1,6 +1,6 @@
-package JavaHTPE11.ClassLesson2_oop_polymorphism.Polymorphism.example2;
+package JavaHTPE11.ClassLesson2_oop_polymorphism.polymorphism;
 
-public abstract class Employee {
+public class Employee {
     public Employee(String name) {
         setName(name);
     }
@@ -14,14 +14,16 @@ public abstract class Employee {
         this.name = new String(name);
     }
 
-    //private double minSal()
-    protected double minSal() {
+    public double minSal()
+    //protected double minSal()
+    {
         return 5000;
     }
 
-    public abstract double pay();
+    public double pay() {
+        return minSal();
+    }
 
-    @Override
     public String toString() {
         return "name is " + name;
     }

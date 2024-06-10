@@ -1,4 +1,4 @@
-package JavaHTPE11.ClassLesson8_concurrency_2.V2.example3;
+package JavaHTPE11.ClassLesson8_concurrency_2.V2.example3_sleep_use;
 
 public class Main {
     public static void main(String args[]) {

@@ -19,7 +19,7 @@ public class Driver {
 		//Father f1 = new GrandFather(7);
 		/**6*/
 		//GrandSon s1 = new Son(1, 2);
-		/**7*
+		/**7*/
 		//Son s1 = new GrandSon(0, 0, 0);
 		/**8*/
 		//GrandSon g1 = new Father(0, 0);
@@ -70,7 +70,7 @@ public class Driver {
 		//Father f1 = (GrandSon)(new Son(2,2));
 		/**12*/
 		//Father f1 = (GrandFather)(new Son(2,2));
-		/**13*/
+		/**13 Retry */
 		//Father f1 = null;
 		//GrandSon g1 = (GrandSon)f1;
 		/**14*/
@@ -113,10 +113,10 @@ public class Driver {
 		//Son s1 = new GrandSon(1, 1, 1);
 		//Daughter d1 = (Daughter)s1;
 
-		/** Equals 
+		/** Equals - Retry
 		 * Runtime error / what will be printed? */
 		
-		/**1*/
+		/**1 Retry*/
 		//Son s1 = new Son(1, 2);
 		//GrandFather f1 = new GrandFather(3);
 		//s1.equals(f1);
@@ -128,7 +128,7 @@ public class Driver {
 		//Son s1 = new Son(1, 2);
 		//Object o = new Object();
 		//s1.equals(o);
-		/**4*/
+		/**4 Retry*/
 		//Son s1 = new Son(1, 2);
 		//Object o = new Object();
 		//o.equals(s1);
@@ -136,7 +136,7 @@ public class Driver {
 		//Son s1 = new Son(1, 2);
 		//Object o = s1;
 		//s1.equals(o);
-		/**6*/
+		/**6 Retry*/
 		//Son s1 = new Son(1, 2);
 		//Object o = s1;
 		//o.equals(s1);
@@ -160,7 +160,7 @@ public class Driver {
 		//Son s1 = new GrandSon(1, 1, 3);
 		//Son s2 = new GrandSon(1, 1, 3);
 		//s1.equals(s2);
-		/**12*/
+		/**12 Retry*/
 		//Son s1 = new GrandSon(1, 1, 3);
 		//Father f1 = new GrandSon(1, 1, 3);
 		//s1.equals(f1);
@@ -201,7 +201,7 @@ public class Driver {
 		//Father f = new Son(2,3);
 		//o.equals(f);
 
-		/** Foo 
+		/** Foo Retry
 		 * Compilation error/ Runtime error / what will be printed? */
 
 		/**1*/
@@ -276,7 +276,7 @@ public class Driver {
 		//f1.bar(1,2);
 		/**3*/
 		//Son s1 = new Son(1,2);
-		//s1.bar(0,0);
+		//		//s1.bar(0,0);
 		/**4*/
 		//Father f1 = new Son(1, 2);
 		//f1.bar(2,2);

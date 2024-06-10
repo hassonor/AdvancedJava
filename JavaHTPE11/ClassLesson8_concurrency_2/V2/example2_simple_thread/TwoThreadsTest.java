@@ -1,4 +1,4 @@
-package JavaHTPE11.ClassLesson8_concurrency_2.V2.example2;
+package JavaHTPE11.ClassLesson8_concurrency_2.V2.example2_simple_thread;
 
 public class TwoThreadsTest {
     public static void main(String[] args) {

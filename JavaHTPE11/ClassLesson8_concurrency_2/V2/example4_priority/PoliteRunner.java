@@ -1,4 +1,4 @@
-package JavaHTPE11.ClassLesson8_concurrency_2.V2.example4;
+package JavaHTPE11.ClassLesson8_concurrency_2.V2.example4_priority;
 
 public class PoliteRunner extends Thread {
 

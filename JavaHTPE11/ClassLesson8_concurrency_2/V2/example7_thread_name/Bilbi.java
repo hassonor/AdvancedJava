@@ -1,4 +1,4 @@
-package JavaHTPE11.ClassLesson8_concurrency_2.V2.example7;
+package JavaHTPE11.ClassLesson8_concurrency_2.V2.example7_thread_name;
 
 class Bilbi implements Runnable {
     private int i;

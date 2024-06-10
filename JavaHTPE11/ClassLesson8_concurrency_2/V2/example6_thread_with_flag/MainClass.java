@@ -1,4 +1,4 @@
-package JavaHTPE11.ClassLesson8_concurrency_2.V2.example6;
+package JavaHTPE11.ClassLesson8_concurrency_2.V2.example6_thread_with_flag;
 
 public class MainClass {
 

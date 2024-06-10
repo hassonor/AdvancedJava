@@ -1,4 +1,4 @@
-package JavaHTPE11.ClassLesson8_concurrency_2.V2.example8_basic_use_join;
+package JavaHTPE11.ClassLesson8_concurrency_2.V2.example9_basic_use_join;
 
 public class MainClass {
     public static void main(String[] args) {

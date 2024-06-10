@@ -1,4 +1,4 @@
-package JavaHTPE11.ClassLesson8_concurrency_2.V2.example5;
+package JavaHTPE11.ClassLesson8_concurrency_2.V2.example5_deamon_thread;
 
 public class TestDaemon {
 

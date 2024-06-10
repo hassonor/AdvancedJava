@@ -1,4 +1,4 @@
-package JavaHTPE11.ClassLesson8_concurrency_2.V2.example7;//filename: ThreadApplication2.java
+package JavaHTPE11.ClassLesson8_concurrency_2.V2.example7_thread_name;//filename: ThreadApplication2.java
 
 
 public class ThreadApplication2 {

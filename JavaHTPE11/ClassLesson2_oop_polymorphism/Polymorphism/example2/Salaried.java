@@ -1,4 +1,4 @@
-package JavaHTPE11.ClassLesson2.Polymorphism;
+package JavaHTPE11.ClassLesson2_oop_polymorphism.Polymorphism.example2;
 
 public class Salaried extends Employee {
     public Salaried(String name, double salary) {
@@ -11,7 +11,6 @@ public class Salaried extends Employee {
     }
 
     public double getSalary() {
-
         return salary;
     }
 
@@ -20,8 +19,13 @@ public class Salaried extends Employee {
         return salary;
     }
 
+    @Override
     public String toString() {
         return super.toString() + " (salary is " + salary + ")";
+    }
+
+    public void stam() {
+        System.out.println("bibi");
     }
 
     double salary;

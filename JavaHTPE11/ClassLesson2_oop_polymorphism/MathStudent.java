@@ -1,4 +1,4 @@
-package JavaHTPE11.ClassLesson2;
+package JavaHTPE11.ClassLesson2_oop_polymorphism;
 
 public class MathStudent extends Student {
 

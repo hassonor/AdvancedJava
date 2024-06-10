@@ -1,6 +1,6 @@
-package JavaHTPE11.ClassLesson2.ex_3.secondPackage;
+package JavaHTPE11.ClassLesson2_oop_polymorphism.ex_3.secondPackage;
 
-import JavaHTPE11.ClassLesson2.ex_3.firstPackage.A;
+import JavaHTPE11.ClassLesson2_oop_polymorphism.ex_3.firstPackage.A;
 
 public class E {
     public E() {

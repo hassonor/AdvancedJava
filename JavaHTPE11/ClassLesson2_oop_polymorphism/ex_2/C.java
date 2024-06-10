@@ -1,4 +1,4 @@
-package JavaHTPE11.ClassLesson2.ex_2;
+package JavaHTPE11.ClassLesson2_oop_polymorphism.ex_2;
 
 public class C {
     public C() {

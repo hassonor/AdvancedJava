@@ -1,4 +1,4 @@
-package JavaHTPE11.ClassLesson2.Polymorphism;
+package JavaHTPE11.ClassLesson2_oop_polymorphism.Polymorphism;
 
 public class Main {
     public static void main(String[] args) {

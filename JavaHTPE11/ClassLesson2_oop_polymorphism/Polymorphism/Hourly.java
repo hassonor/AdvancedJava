@@ -1,4 +1,4 @@
-package JavaHTPE11.ClassLesson2.Polymorphism;
+package JavaHTPE11.ClassLesson2_oop_polymorphism.Polymorphism;
 
 public class Hourly extends Employee {
     public Hourly(String name, double rate, double hours) {

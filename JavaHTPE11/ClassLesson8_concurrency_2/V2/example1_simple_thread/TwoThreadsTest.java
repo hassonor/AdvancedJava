@@ -1,4 +1,4 @@
-package JavaHTPE11.ClassLesson8_concurrency_2.V2.example1;
+package JavaHTPE11.ClassLesson8_concurrency_2.V2.example1_simple_thread;
 
 public class TwoThreadsTest {
     public static void main(String[] args) {
@@ -6,7 +6,7 @@ public class TwoThreadsTest {
         new SimpleThread("Fiji").start();
         SimpleThread t = new SimpleThread("stam SimpleThread.....");
         t.start();
-        
+
     }
 }
 

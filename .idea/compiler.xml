@@ -10,6 +10,7 @@
         <module name="DrawLines" />
         <module name="DrawRandomLines" />
         <module name="DrawSmiley" />
+        <module name="hello-maven" />
         <module name="DrawRainbow" />
       </profile>
     </annotationProcessing>

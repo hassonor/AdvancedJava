@@ -14,6 +14,12 @@ public class Main {
         t2.start();
         t3.start();
 
+        /* We can also write this instead
+        new Thread(w1).start();
+        new Thread(w2).start();
+        new Thread(w3).start();
+         **/
+
         System.out.println("DONE");
     }
 }

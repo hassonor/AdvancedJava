@@ -29,7 +29,7 @@ public class ThreadArray {
         //printing after the change
         for (int i = 0; i < N; i++)
             System.out.print(threads[i] + ",");
-        System.out.println("");
+        System.out.println();
 
         //notify the threads that they can end
         sharedCounter.finishPrint();

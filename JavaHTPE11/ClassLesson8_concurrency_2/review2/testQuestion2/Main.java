@@ -13,7 +13,7 @@ public class Main {
             coinThreads[i].start();
         }
 
-        m.waitForAllDone();
+//        m.waitForAllDone();
         System.out.println("MAIN DONE");
     }
 }

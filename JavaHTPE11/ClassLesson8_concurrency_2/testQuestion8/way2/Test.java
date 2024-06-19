@@ -1,4 +1,4 @@
-package JavaHTPE11.ClassLesson8_concurrency_2.testQuestion8;
+package JavaHTPE11.ClassLesson8_concurrency_2.testQuestion8.way2;
 
 public class Test {
     public static void main(String[] args) {

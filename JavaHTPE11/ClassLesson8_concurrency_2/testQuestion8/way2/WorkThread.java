@@ -1,4 +1,8 @@
-package JavaHTPE11.ClassLesson8_concurrency_2.testQuestion8;
+package JavaHTPE11.ClassLesson8_concurrency_2.testQuestion8.way2;
+
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class WorkThread extends Thread {
     private int[] vec;
@@ -7,7 +11,8 @@ public class WorkThread extends Thread {
 
     private static int nextTurn = 0;
 
-    private static final Object monitor = new Object();
+    private static Lock lock = new ReentrantLock();
+    private static Condition cond = lock.newCondition();
 
     public WorkThread(int[] vec, int id) {
         this.vec = vec;
@@ -27,10 +32,11 @@ public class WorkThread extends Thread {
 
     @Override
     public void run() {
-        synchronized (monitor) {
+        lock.lock();
+        try {
             while (id != nextTurn) {
                 try {
-                    monitor.wait();
+                    cond.await();
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                 }
@@ -38,8 +44,11 @@ public class WorkThread extends Thread {
             result = process(vec, id);
             System.out.println("task " + id + ", result=" + result);
             nextTurn++;
-            monitor.notifyAll();
+            cond.signalAll();
+        } finally {
+            lock.unlock();
         }
+
     }
 
 }

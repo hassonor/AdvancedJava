@@ -1,6 +1,6 @@
-package JavaHTPE11.ClassLesson11_test_questions.testQuestion_generics.d;
+package JavaHTPE11.ClassLesson11_test_questions.testQuestion1_generics.d;
 
-import JavaHTPE11.ClassLesson11_test_questions.testQuestion_generics.b.Student;
+import JavaHTPE11.ClassLesson11_test_questions.testQuestion1_generics.b.Student;
 
 import java.util.ArrayList;
 
@@ -22,6 +22,6 @@ public class Main {
         ArrayList<GradStudent> arr4 = new ArrayList<GradStudent>();
 
         arr3 = arr4;
-        
+
     }
 }

@@ -1,8 +1,8 @@
-package JavaHTPE11.ClassLesson11_test_questions.testQuestion_generics.c;
+package JavaHTPE11.ClassLesson11_test_questions.testQuestion1_generics.c;
 
 import JavaHTPE11.ClassLesson10.testQuestion3_generics.a.IllegalDataException;
-import JavaHTPE11.ClassLesson11_test_questions.testQuestion_generics.a.ISortedQuestion;
-import JavaHTPE11.ClassLesson11_test_questions.testQuestion_generics.b.Student;
+import JavaHTPE11.ClassLesson11_test_questions.testQuestion1_generics.a.ISortedQuestion;
+import JavaHTPE11.ClassLesson11_test_questions.testQuestion1_generics.b.Student;
 
 import java.util.ArrayList;
 import java.util.Random;

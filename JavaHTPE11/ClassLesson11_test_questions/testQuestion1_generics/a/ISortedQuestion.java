@@ -1,4 +1,4 @@
-package JavaHTPE11.ClassLesson11_test_questions.testQuestion_generics.a;
+package JavaHTPE11.ClassLesson11_test_questions.testQuestion1_generics.a;
 
 import JavaHTPE11.ClassLesson10.testQuestion3_generics.a.IllegalDataException;
 

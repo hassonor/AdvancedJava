@@ -13,6 +13,14 @@ public class Test {
             workers[i].start();
         }
 
+        for (int i = 0; i < workers.length; i++) {
+            try {
+                workers[i].join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
         System.out.println("**main**");
     }
 }

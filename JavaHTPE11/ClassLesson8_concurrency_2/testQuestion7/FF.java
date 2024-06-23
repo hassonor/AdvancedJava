@@ -1,4 +1,4 @@
-package JavaHTPE11.ClassLesson8_concurrency_2.testQuestion7;
+package JavaHTPE11.classLesson8_concurrency_2.testQuestion7;
 
 public class FF {
     public void foo() {

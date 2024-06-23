@@ -1,6 +1,6 @@
 package JavaHTPE11.ClassLesson2_oop_polymorphism.Interfaces;
 
-public interface ImpTest {
+public interface ImpTest  {
     int MyConst = 500;
 
 
@@ -13,3 +13,4 @@ public interface ImpTest {
         return true;
     }
 }
+

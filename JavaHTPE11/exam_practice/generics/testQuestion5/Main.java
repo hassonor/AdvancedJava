@@ -1,9 +1,14 @@
 package JavaHTPE11.exam_practice.generics.testQuestion5;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Main {
     public static void main(String[] args) {
+        Menu<? extends Desert> arr1 = new Menu<Desert>();
+        Menu<Cake> arr2 = new Menu<Cake>();
+
+        arr1 = arr2;
 
     }
 

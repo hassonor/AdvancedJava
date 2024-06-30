@@ -4,6 +4,10 @@ public class C {
     private int i;
     private static int j;
 
+    public C(int x) {
+        this.i = x;
+    }
+
     void print1() {
         System.out.println(i + ", " + j);
     }
@@ -14,6 +18,7 @@ public class C {
 
     public static void main(String[] args) {
         int k;
+        C x = new C(5);
         // System.out.println(i); // Compilation Error!
         System.out.println(j);
 //  System.out.println(k); // Compilation Error!

@@ -7,13 +7,15 @@ public class Storage {
     private String[] strings;
     private boolean[] encrypted;
     private int currentIndex;
-    private ReentrantLock lock;
-    private Condition allEncrypted;
+    private int encryptedCount;
+    private final ReentrantLock lock;
+    private final Condition allEncrypted;
 
     public Storage(String[] strings) {
         this.strings = strings;
         this.encrypted = new boolean[strings.length];
         this.currentIndex = 0;
+        this.encryptedCount = 0;
         this.lock = new ReentrantLock();
         this.allEncrypted = lock.newCondition();
     }
@@ -36,8 +38,11 @@ public class Storage {
         lock.lock();
         try {
             strings[data.getPos()] = data.getText();
-            encrypted[data.getPos()] = true;
-            if (allStringsEncrypted()) {
+            if (!encrypted[data.getPos()]) {
+                encrypted[data.getPos()] = true;
+                encryptedCount++;
+            }
+            if (encryptedCount == strings.length) {
                 allEncrypted.signalAll();
             }
         } finally {
@@ -48,24 +53,16 @@ public class Storage {
     public String[] getResult() {
         lock.lock();
         try {
-            while (!allStringsEncrypted()) {
+            while (encryptedCount < strings.length) {
                 allEncrypted.await();
             }
             return strings;
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
+            System.err.println("Thread was interrupted");
             return null;
         } finally {
             lock.unlock();
         }
-    }
-
-    private boolean allStringsEncrypted() {
-        for (boolean b : encrypted) {
-            if (!b) {
-                return false;
-            }
-        }
-        return true;
     }
 }

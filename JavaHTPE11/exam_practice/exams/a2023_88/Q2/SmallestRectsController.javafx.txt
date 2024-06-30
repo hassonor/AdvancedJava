@@ -1,0 +1,98 @@
+package com.example.mb;
+
+
+import javafx.fxml.FXML;
+import javafx.geometry.Point2D;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Alert;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Rectangle;
+
+import java.util.ArrayList;
+import java.util.Random;
+
+public class MBController {
+    @FXML
+    private Canvas canv;
+
+    private GraphicsContext  gc;
+
+    private final int SIZE = 10;
+
+    private final int BOUND = 100;
+
+    private int wrongClicks = 0;
+
+    private ArrayList<Rectangle> rects;
+
+    public void initialize() {
+        gc = canv.getGraphicsContext2D();
+        rects = new ArrayList<Rectangle>();
+        generateRects();
+        strokeRects();
+    }
+
+    private void generateRects() {
+        Random r = new Random();
+        for(int i = 0; i < SIZE;i++){
+            int randomSize= r.nextInt(91) + 10;
+            int x = r.nextInt((int)canv.getWidth()-BOUND);
+            int y = r.nextInt((int)canv.getHeight()-BOUND);
+            rects.add(new Rectangle(x,y,randomSize,randomSize));
+        }
+    }
+
+    private void strokeRects(){
+        gc.clearRect(0,0,canv.getWidth(),canv.getHeight());
+
+        for(Rectangle r: rects){
+            gc.strokeRect(r.getX(),r.getY(),r.getWidth(),r.getHeight());
+        }
+    }
+
+    private Rectangle getSmallest(){
+        if(rects.isEmpty()) return null;
+        Rectangle smallest = rects.get(0);
+        for(Rectangle r: rects){
+            if(r.getWidth() < smallest.getWidth())
+                smallest = r;
+        }
+        return smallest;
+    }
+
+    private void removeSmallest(Rectangle smallest){
+        rects.remove(smallest);
+    }
+
+    @FXML
+    void onPressed(MouseEvent event) {
+        Rectangle smallest = getSmallest();
+        if(smallest != null && smallest.contains(new Point2D(event.getX(), event.getY()))){
+            removeSmallest(smallest);
+            if(rects.isEmpty()){
+                endRoundLogic();
+            }
+            strokeRects();
+        }
+        else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Wrong Hit");
+            alert.setContentText("Wrong Hit");
+            alert.setHeaderText("Wrong Hit");
+            alert.showAndWait();
+            wrongClicks++;
+        }
+    }
+
+    private void endRoundLogic(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Game End");
+        alert.setContentText("Wrong Hit Count: " + wrongClicks);
+        alert.setHeaderText("Game End");
+        alert.showAndWait();
+        wrongClicks =0;
+        generateRects();
+        strokeRects();
+    }
+}

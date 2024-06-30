@@ -1,4 +1,4 @@
-package JavaHTPE11.exam_practice.exams.a2023_88.Q4;
+package JavaHTPE11.exam_practice.exams.a2023_88.Q4.firstWay;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;

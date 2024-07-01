@@ -1,0 +1,63 @@
+public class PicsController{
+	@FXML
+	private ImageView img;
+
+	@FXML
+	private Label label;
+
+	private String[] titles = new String[]{"Title1","Title2","Title3","Title4"};
+	private int count =1;
+	final int N = 4;
+
+	public void initailize(){setPic();}
+
+	private void setPic(){
+		FileInputStream input;
+
+		try{
+			input = new FileInputStream("pic" + count + ".gif");
+			Image image = new Image(input);
+			img.setImage(image);
+			setTitle();
+		}
+		catch(FileNotFoundException e){
+			e.printStackTrace();
+		}
+	}
+
+	private void setTitle(){ title.setText(titles[count -1];)}
+
+	@FXML
+	void nextPressed(ActionEvent event){
+		count++;
+		if(count > N){
+			count = 1;
+		}
+
+		setPic();
+	}
+
+	@FXML
+	void jumpPressed(ActionEvent event){
+		TextInputDialog dialog = new TextInputDialog();
+		dialog.setHeaderText("Enter number between 1 to " + N);
+		Optional<String> result = showAndWait();
+
+		if(result.isPresent()){
+			try{
+				int num = Integer.parseInt(result.get());
+				if(num < 1 || num > N) return;
+				count = num;
+				setPic();
+			}
+			catch(Exception e){
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Error");
+				alert.setHeaderText("Oops");
+				alert.setContextText("Must be a number");
+				alert.showAndWait();
+			}
+		}
+	}
+
+}

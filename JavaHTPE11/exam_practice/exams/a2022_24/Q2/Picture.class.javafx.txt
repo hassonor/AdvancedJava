@@ -1,0 +1,18 @@
+package JavaHTPE11.exam_practice.exams.a2022_24.Q2;
+
+import javafx.scene.image.Image;
+
+public class Picture {
+    private Image image;
+
+    private String text;
+
+    public Picture(){
+        this.image = new Image(getClass().getResourceAsStream("wisdomhubIcon.jpg"));
+        this.text = "Default Text"; // Optional: set a default text if needed
+    }
+
+    public Image getImage(){return image;}
+
+    public String getText(){return text;};
+}

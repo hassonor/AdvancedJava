@@ -1,0 +1,75 @@
+package com.example.mb;
+
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.layout.GridPane;
+
+import java.util.Random;
+
+public class CardsController {
+    private final int SIZE = 5;
+    private Button btns[];
+
+    private int remainingCards;
+
+    private int totalScore;
+
+    private int[] optionalScores = {0,100,200,300,400};
+
+    public void initialize(){
+        initializeGame();
+    }
+
+    private  void initializeGame(){
+        totalScore = 0;
+        remainingCards = SIZE*SIZE;
+        btns = new Button[SIZE*SIZE];
+        grid.getChildren().clear();
+        Random r = new Random();
+        for(int i =0; i < SIZE*SIZE;i++){
+            btns[i] = new Button("");
+            btns[i].setUserData(optionalScores[r.nextInt(5)]);
+            btns[i].setPrefSize(grid.getPrefWidth() / SIZE, grid.getPrefHeight()/SIZE);
+            btns[i].setOnAction(new EventHandler<ActionEvent>(){
+                @Override
+                public void handle(ActionEvent e){
+                    handleButton(e);
+                }
+            });
+            grid.add(btns[i], i %SIZE, i / SIZE);
+        }
+    }
+
+    private void handleButton(ActionEvent e){
+        Button btn = (Button)e.getSource();
+        int value = (Integer)btn.getUserData();
+        btn.setVisible(false); // Set the button to be invisible
+        totalScore+=value;
+        showPopUp("Value selected: " + value);
+        remainingCards--;
+        if(value == 0 || remainingCards == 0){
+            showPopUp("Game Over, Total Score: " + totalScore);
+            initializeGame();
+        }
+    }
+
+    private void showPopUp(String text){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(text);
+        alert.setContentText(text);
+        alert.setHeaderText(text);
+        alert.showAndWait();
+    }
+
+    @FXML
+    private GridPane grid;
+
+    @FXML
+    void onResetPress(ActionEvent event) {
+        initializeGame();
+    }
+
+}

@@ -9,7 +9,7 @@ public class PicsController{
 	private int count =1;
 	final int N = 4;
 
-	public void initailize(){setPic();}
+	public void initialize(){setPic();}
 
 	private void setPic(){
 		FileInputStream input;

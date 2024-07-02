@@ -1,0 +1,86 @@
+import javafx.fxml.FXML;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Alert;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.event.ActionEvent;
+import javafx.geometry.Point2D;
+import java.util.ArrayList;
+import java.util.Random;
+import javafx.scene.shape.Rectangle;
+
+public class RandomSquaresController{
+    private final int n = 5;
+    private final int SIZE = 10;
+    private double startTime;
+    private ArrayList<Rectangle> rects;
+    private GraphicsContext gc;
+
+    public void initialize(){
+        gc = canv.getGraphicsContext2D();
+        rects = new ArrayList<Rectangle>();
+    }
+
+    @FXML
+    private Canvas canv;
+
+
+    @FXML
+    void onMousePressed(MouseEvent event){
+        removeIfRectContains(event);
+        if(rects.isEmpty()){
+            double endTime = (double)System.currentTimeMills();
+            double totalTimePlayed = endTime - startTime;
+            Alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeader("Game Over, Total Time: + totalTimePlayed);
+            alert.setTitle("Game Over, Total Time: + totalTimePlayed);
+            alert.setContentText("Game Over, Total Time: + totalTimePlayed);
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    void goPressed(ActionEvent event){
+        generateRects();
+        strokeRects();
+        startTime = (double)System.currentTimeMillis();
+    }
+
+    private void generateRects(){
+        Random r = new Random();
+        for(int i = 0; i < n;i++){
+            int x = r.nextInt((int) canv.getWidth() - SIZE);
+            int y = r.nextInt((int) canv.getHeight() - SIZE);
+            rects.add(new Rectangle(x,y,SIZE,SIZE));
+        }
+    }
+
+    private void strokeRects(){
+        gc.clearRect(0,0,canv.getWidth(), canv.getHeight());
+        for(Rectangle r: rects){
+            gc.strokeRect(r.getX(), r.getY(), r.getWidth(), r.getHeight());
+        }
+    }
+
+    private void removeIfContains(MouseEvent event){
+        boolean needToStroke = false;
+        for(Rectangle r: rects){
+            if(r.contains(new Point2D(event.getX(), event.getY()))){
+                needToStroke = true;
+                rects.remove(r);
+                break;
+
+            }
+        }
+
+        strokeRects();
+
+    }
+
+
+
+
+
+
+}

@@ -1,0 +1,72 @@
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+
+public class DrawMatrixCellsController {
+    private final int SIZE = 20;
+    private GraphicsContext gc;
+    private boolean[][] state;
+
+    @FXML
+    private Canvas canvas;
+
+    public void initialize() {
+        gc = canvas.getGraphicsContext2D();
+        int rows = (int) (canvas.getHeight() / SIZE);
+        int cols = (int) (canvas.getWidth() / SIZE);
+        state = new boolean[rows][cols];
+        drawGrid();
+    }
+
+    private void drawGrid() {
+        gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        gc.setStroke(Color.BLACK);
+
+        for (int i = 0; i <= state.length; i++) {
+            gc.strokeLine(0, i * SIZE, canvas.getWidth(), i * SIZE);
+        }
+
+        for (int i = 0; i <= state[0].length; i++) {
+            gc.strokeLine(i * SIZE, 0, i * SIZE, canvas.getHeight());
+        }
+
+        for (int r = 0; r < state.length; r++) {
+            for (int c = 0; c < state[r].length; c++) {
+                if (state[r][c]) fillSquare(r, c, Color.BLACK);
+            }
+        }
+    }
+
+    private void fillSquare(int r, int c, Color color) {
+        double x = c * SIZE;
+        double y = r * SIZE;
+        gc.setFill(color);
+        gc.fillRect(x, y, SIZE, SIZE);
+        if (color == Color.WHITE) {
+            gc.setStroke(Color.BLACK);
+            gc.strokeRect(x, y, SIZE, SIZE);
+        }
+    }
+
+    @FXML
+    void clearButtonPressed(ActionEvent event) {
+        for (boolean[] row : state) {
+            java.util.Arrays.fill(row, false);
+        }
+        drawGrid();
+    }
+
+    @FXML
+    void onMatrixPress(MouseEvent event) {
+        int r = (int) (event.getY() / SIZE);
+        int c = (int) (event.getX() / SIZE);
+        if (r < state.length && c < state[r].length) {
+            state[r][c] = !state[r][c];
+            fillSquare(r, c, state[r][c] ? Color.BLACK : Color.WHITE);
+        }
+    }
+}

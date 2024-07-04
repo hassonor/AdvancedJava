@@ -1,0 +1,59 @@
+public class WordGameController{
+	@FXML
+	private GridPane grid;
+
+	@FXML
+	private TextField textF;
+
+	private Button[] buttons;
+	private Dictionary d;
+	private final int SIZE = 7;
+	private int score = 0;
+
+	public void initialize(){
+		d = new Dictionary();
+		buttons = new Button[SIZE];
+		grid.getChildren().clear();
+		addRandomLettersButtons();
+	}
+
+	private void addRandomLettersButtons(){
+		for(int i=0; i < SIZE;i++){
+			buttons[i] = new Button(d.getRandomLetter()+””);
+			buttons[i].setPrefSize(grid.getPrefWidth()/SIZE, grid.getPrefHeight()/SIZE);
+			buttons[i].setOnAction(new EventHandler<ActionEvent>(){
+				@Override
+				public void handle(ActionEvent event){
+					handeButton(event);
+				}
+			});
+			grid.add(buttons[i], i % SIZE, i / SIZE);
+		}
+	}
+
+	@FXML
+	void endPressed(ActionEvent event){
+		if (d.isLegal(textF.getText())){
+			score += (textF.getText()).length();
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+			alert.setTitle("Legal Word");
+			alert.setContentText("Total Score: " + score);
+			alert.setHeaderText("Total Score: " + score);
+			alert.showAndWait();
+		}
+		else{
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+			alert.setTitle(“Illegal Word”);
+			alert.setContentText(“Total Score: + “ score);
+			alert.setHeaderText(“Total Score: + “ score);
+			alert.showAndWait();
+		}
+		textF.setText(“”);
+	}
+
+	private void handleButton(ActionEvent event){
+		textF.appendText(((Button)event.getSource()).getText();
+	}
+
+
+}

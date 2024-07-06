@@ -1,0 +1,46 @@
+package com.example.mb;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.MouseEvent;
+
+
+
+public class DrawLinesController{
+    @FXML
+    private Canvas canv;
+
+    private GraphicsContext gc;
+    private double x =-1,y=-1;
+
+    public void initialize(){
+        gc = canv.getGraphicsContext2D();
+    }
+
+    @FXML
+    void clearPressed(ActionEvent event){
+        gc.clearRect(0,0,canv.getWidth(), canv.getHeight());
+        x = -1;
+        y = -1;
+    }
+
+    @FXML
+    void canvOnMousePress(MouseEvent event){
+        if(x==-1){
+            x = event.getX();
+            y = event.getY();
+        }
+        else{
+            double currentX = event.getX();
+            double currentY = event.getY();
+            gc.strokeLine(x,y,currentX,currentY);
+            x = currentX;
+            y = currentY;
+        }
+    }
+
+
+}

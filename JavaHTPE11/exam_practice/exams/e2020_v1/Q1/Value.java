@@ -1,4 +1,4 @@
-package JavaHTPE11.exam_practice.exams.a2000_example.Q1;
+package JavaHTPE11.exam_practice.exams.e2020_v1.Q1;
 
 public class Value {
     private int num = 0;

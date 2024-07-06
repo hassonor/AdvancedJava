@@ -1,4 +1,4 @@
-package JavaHTPE11.exam_practice.exams.a2020_82.Q4;
+package JavaHTPE11.exam_practice.exams.a2020_82.Q4.A;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;

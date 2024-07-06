@@ -1,4 +1,4 @@
-package JavaHTPE11.exam_practice.exams.a2020_82.Q4;
+package JavaHTPE11.exam_practice.exams.a2020_82.Q4.A;
 
 public class Test {
     public static void main(String[] args) {

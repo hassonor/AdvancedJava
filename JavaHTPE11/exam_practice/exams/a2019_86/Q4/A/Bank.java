@@ -1,4 +1,4 @@
-package JavaHTPE11.exam_practice.exams.a2021_91.Q4.B;
+package JavaHTPE11.exam_practice.exams.a2019_86.Q4.A;
 
 import java.util.*;
 
@@ -11,16 +11,17 @@ public class Bank {
         }
     }
 
-    public synchronized int service(int teller) {
-        while (!freeTellers.contains(teller)) {
+    public synchronized int service() {
+        int teller;
+        while (freeTellers.isEmpty()) {
             try {
                 wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        int index = freeTellers.indexOf(teller);
-        freeTellers.remove(index);
+        teller = freeTellers.get(0);
+        freeTellers.remove(0);
         return teller;
     }
 

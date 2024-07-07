@@ -4,10 +4,11 @@ import java.util.Random;
 
 public class C extends A {
     private int num2;
+    private static final Random r = new Random();
 
     public C() {
-        super((new Random()).nextInt(11));
-        num2 = (new Random()).nextInt(11);
+        super(r.nextInt(11));
+        num2 = (r.nextInt(11));
     }
 
     public boolean foo(C c) {

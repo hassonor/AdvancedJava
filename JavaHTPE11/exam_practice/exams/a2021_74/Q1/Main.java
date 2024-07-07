@@ -17,6 +17,7 @@ public class Main {
             if (b instanceof Cinema) {
                 Cinema temp = (Cinema) b;
                 if (temp.getPlaces() > maxPlaces) {
+                    maxPlaces = temp.getPlaces();
                     c = temp;
                 }
             }

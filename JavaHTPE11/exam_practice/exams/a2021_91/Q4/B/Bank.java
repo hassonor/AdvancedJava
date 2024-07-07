@@ -19,9 +19,8 @@ public class Bank {
                 e.printStackTrace();
             }
         }
-        int index = freeTellers.indexOf(teller);
-        freeTellers.remove(index);
-        return teller;
+        return freeTellers.remove(freeTellers.indexOf(teller););
+
     }
 
     public synchronized void release(int teller) {

@@ -46,5 +46,6 @@ public class Test {
         } catch (NullPointerException e) {
             System.out.println("exception caught in code");
         }
+        System.out.println("end Code");
     }
 }

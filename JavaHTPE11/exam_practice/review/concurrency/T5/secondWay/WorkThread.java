@@ -1,13 +1,16 @@
-package JavaHTPE11.exam_practice.exams.a2020_82.Q4.B;
+package JavaHTPE11.exam_practice.review.concurrency.T5.secondWay;
+
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class WorkThread extends Thread {
     private int[] vec;
     private int id;
     private int result;
     private static int nextTurn = 0;
-
-    private static final Object obj = new Object();
-
+    private static Lock lock = new ReentrantLock();
+    private static Condition cond = lock.newCondition();
 
     public WorkThread(int[] vec, int id) {
         this.vec = vec;
@@ -16,7 +19,6 @@ public class WorkThread extends Thread {
 
     public static synchronized int process(int[] vec, int id) {
         int result = 0;
-        System.out.println("task" + id);
         for (int i = 0; i < vec.length; i++) {
             vec[i] = vec[i] + 1;
             result = result + vec[i];
@@ -25,21 +27,22 @@ public class WorkThread extends Thread {
         return result;
     }
 
-    @Override
     public void run() {
         result = process(vec, id);
-
-        synchronized (obj) {
+        lock.lock();
+        try {
             while (id > nextTurn) {
                 try {
-                    obj.wait();
+                    cond.await();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
             System.out.println("task" + id + " result=" + result);
             nextTurn++;
-            obj.notifyAll();
+            cond.signalAll();
+        } finally {
+            lock.unlock();
         }
     }
 }

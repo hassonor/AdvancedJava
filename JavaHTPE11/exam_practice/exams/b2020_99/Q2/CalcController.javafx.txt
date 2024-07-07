@@ -1,0 +1,64 @@
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
+
+public class CalcController {
+    @FXML
+    private ComboBox<String> comboBox;
+
+    @FXML
+    private TextField leftTF;
+
+    @FXML
+    private TextField rightTF;
+
+    @FXML
+    private Text textResult;
+
+    public void initialize() {
+        comboBox.getItems().addAll("+", "-", "*");
+        comboBox.setValue("+");
+    }
+
+    @FXML
+    void onEqualPressed(ActionEvent event) {
+        performOperation();
+    }
+
+    private void performOperation() {
+        try {
+            double leftValue = Double.parseDouble(leftTF.getText());
+            double rightValue = Double.parseDouble(rightTF.getText());
+            double result = 0;
+
+            String selectedOperation = comboBox.getValue();
+            switch (selectedOperation) {
+                case "+":
+                    result = leftValue + rightValue;
+                    break;
+                case "-":
+                    result = leftValue - rightValue;
+                    break;
+                case "*":
+                    result = leftValue * rightValue;
+                    break;
+                default:
+                    break;
+            }
+
+            textResult.setText(String.valueOf(result));
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Invalid value");
+            alert.setContentText("Please enter valid numbers.");
+
+            alert.showAndWait();
+            leftTF.setText("");
+            rightTF.setText("");
+        }
+    }
+}

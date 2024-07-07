@@ -1,4 +1,4 @@
-package JavaHTPE11.exam_practice.review.T1;
+package JavaHTPE11.exam_practice.review.concurrency.T1;
 
 
 public class Manager {

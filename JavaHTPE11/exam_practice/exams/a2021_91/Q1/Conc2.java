@@ -9,7 +9,14 @@ public class Conc2 extends Conc {
     }
 
     public Conc2(int num) throws Exception {
-        super(num);
+        super();
+        if (num < 0 || num > 100)
+            throw new Exception();
+
+        for (int i = 0; i < num; i++) {
+            super.apply();
+        }
+
     }
 
 

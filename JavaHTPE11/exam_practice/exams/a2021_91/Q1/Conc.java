@@ -6,12 +6,6 @@ public class Conc implements Applyable {
     public Conc() {
     }
 
-    public Conc(int num) throws Exception {
-        if (num < 0 || num > 100)
-            throw new Exception();
-        this.num = num;
-    }
-
     public int getNum() {
         return num;
     }

@@ -10,7 +10,7 @@ public class Manager {
         this.max = max;
         this.x = x;
         onBreak = 0;
-        lastThreadBreak = new long[size]; // Correct initialization
+        lastThreadBreak = new long[size];
     }
 
     public synchronized void permit(int id) {

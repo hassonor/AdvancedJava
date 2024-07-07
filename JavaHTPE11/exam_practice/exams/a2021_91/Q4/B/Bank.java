@@ -19,7 +19,7 @@ public class Bank {
                 e.printStackTrace();
             }
         }
-        return freeTellers.remove(freeTellers.indexOf(teller););
+        return freeTellers.remove(freeTellers.indexOf(teller));
 
     }
 

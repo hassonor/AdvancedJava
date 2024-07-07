@@ -7,9 +7,9 @@ public class Main {
         A z1 = new C();
         C z2 = new C();
 
-//        System.out.println(y1.foo(y2)); // A foo true
-//        System.out.println(y1.foo((A) y2)); // A foo true
-//        System.out.println(y2.foo(y1)); // A foo true
+//        System.out.println(y1.foo(y2)); // A foo false
+//        System.out.println(y1.foo((A) y2)); // A foo false
+//        System.out.println(y2.foo(y1)); // A foo false
 //        System.out.println(y2.foo(z1)); // A foo true
 //        System.out.println(z1.foo(z2)); // A foo true/false
 //        System.out.println(z1.foo(y1)); // A foo false

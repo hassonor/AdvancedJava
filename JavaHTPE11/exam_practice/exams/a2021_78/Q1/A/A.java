@@ -17,7 +17,7 @@ public class A {
 
     public boolean foo(A a) {
         System.out.println("A foo");
-        return getNum() >= a.getNum();
+        return getNum() >= 2 * a.getNum();
     }
 
 }

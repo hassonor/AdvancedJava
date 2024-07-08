@@ -1,0 +1,62 @@
+package com.example.mb;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
+
+import java.util.Random;
+
+
+public class MovingBall3Controller extends Thread{
+    private MovingBall ball;
+
+    private GraphicsContext gc;
+
+    private boolean isStopped = false;
+
+    @FXML
+    private Canvas canv;
+
+    public void initialize(){
+        gc = canv.getGraphicsContext2D();
+        ball = new MovingBall(200,200);
+        start();
+    }
+
+    @Override
+    public void run() {
+        Random r = new Random();
+        gc.setFill(Color.RED);
+        gc.fillOval(ball.getX(), ball.getY(), 50, 50);
+        while (!isStopped) {
+            try {
+                Thread.sleep(100);
+                gc.clearRect(0, 0, canv.getWidth(), canv.getHeight());
+                ball.move();
+                if (!inBoundaries(ball.getX(), ball.getY())) {
+                    ball = new MovingBall(200, 200);
+                    gc.fillOval(ball.getX(), ball.getY(), 50, 50);
+                }
+                else
+                    gc.fillOval(ball.getX(), ball.getY(), 50, 50);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private boolean inBoundaries(int x, int y) {
+        return (x < canv.getWidth() - 50 && y < canv.getHeight() - 50 && x > 0 && y > 0);
+    }
+
+
+    @FXML
+    void stopPressed(ActionEvent event){
+        ball.stop();
+        isStopped = true;
+    }
+
+}

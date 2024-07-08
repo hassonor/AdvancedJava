@@ -1,0 +1,35 @@
+public class MovingBall1Controller extends Thread{
+	private boolean isStopped = false;
+	private GraphicsContext gc;
+	private double x = 10;
+
+	@FXML
+	private Canvas canv
+
+	public void initialize(){
+		gc = canv.getGraphicsContext2D();
+		start();
+	}
+
+	@Override
+	public void run(){
+		gc.setFill(Color.RED);
+		while(!isStopped){
+			try{
+			    gc.clearRect(0,0,canv.getWidth(), canv.getHeight());
+				gc.fillOval(x,x,50,50);
+				x+=10;
+				sleep(100);
+			}
+			catch(InterruptedException e){
+				e.printStackTrace();
+			}
+		}
+	}
+
+	@FXML
+	void stopPressed(ActionEvent event){
+		isStopped = true;
+	}
+
+}

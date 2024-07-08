@@ -1,0 +1,58 @@
+package com.example.mb;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
+
+import java.util.Random;
+
+
+public class MovingBall2Controller extends Thread{
+    private boolean isStopped = false;
+    private GraphicsContext gc;
+    private double x = 10;
+
+    @FXML
+    private Canvas canv;
+
+    public void initialize(){
+        gc = canv.getGraphicsContext2D();
+        start();
+    }
+
+    @Override
+    public void run(){
+        Random r = new Random();
+        gc.setFill(Color.RED);
+        gc.fillOval((canv.getWidth() -50) / 2,(canv.getHeight()  - 50) / 2,50,50);
+        while(!isStopped){
+            try{
+                sleep(100);
+                gc.clearRect(0,0,canv.getWidth(), canv.getHeight());
+                int x =(int)(r.nextDouble(canv.getWidth()));
+                int y = (int)(r.nextDouble(canv.getHeight()));
+                if(!inBoundaries(x,y))
+                    gc.fillOval((canv.getWidth() -50) / 2,(canv.getHeight()  - 50) / 2,50,50);
+                else
+                    gc.fillOval(x,y,50,50);
+            }
+            catch(InterruptedException e){
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private boolean inBoundaries(int x, int y) {
+        return (x < canv.getWidth() - 50 && y < canv.getHeight() - 50 && x > 0 && y > 0);
+    }
+
+
+    @FXML
+    void stopPressed(ActionEvent event){
+        isStopped = true;
+    }
+
+}

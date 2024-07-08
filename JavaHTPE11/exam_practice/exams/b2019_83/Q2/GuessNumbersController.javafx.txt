@@ -1,0 +1,74 @@
+package com.example.mb;
+
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+
+import java.util.ArrayList;
+import java.util.Random;
+
+
+
+
+public class GuessNumbersController{
+    @FXML
+    private GridPane grid;
+
+    private final int SIZE=10;
+
+    private Button btns[];
+    private int count = 0;
+    private ArrayList<Integer> arr;
+
+    public void initialize(){
+        startGame();
+    }
+
+    private void startGame(){
+        grid.getChildren().clear();
+        btns = new Button[SIZE*SIZE];
+        arr = new ArrayList<Integer>();
+        Random r = new Random();
+        count = 0;
+
+        for(int i = 0; i < SIZE * SIZE;i++){
+            btns[i] = new Button("");
+            btns[i].setUserData(r.nextInt(20) + 1);
+            btns[i].setPrefSize(grid.getPrefWidth()/SIZE, grid.getPrefHeight()/SIZE);
+            btns[i].setOnAction(new EventHandler<ActionEvent>(){
+                @Override
+                public void handle(ActionEvent event){
+                    handleButton(event);
+                }
+            });
+            grid.add(btns[i],i%SIZE, i / SIZE);
+        }
+    }
+
+    private void handleButton(ActionEvent event){
+        count++;
+        Button btn = (Button)event.getSource();
+        int value = (Integer)btn.getUserData();
+        btn.setText(value +"");
+        btn.setDisable(true);
+        if(arr.contains(value)){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Game Over. Score: " + count);
+            alert.setHeaderText("Game Over. Score: " + count);
+            alert.setContentText("Game Over. Score: " + count);
+            alert.showAndWait();
+            startGame();
+        }
+        else{
+            arr.add(value);
+        }
+    }
+
+}

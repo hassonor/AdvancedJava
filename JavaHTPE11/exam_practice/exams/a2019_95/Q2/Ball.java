@@ -17,4 +17,12 @@ public class Ball {
         x = x + dx * 10;
         y = y + dy * 10;
     }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
 }

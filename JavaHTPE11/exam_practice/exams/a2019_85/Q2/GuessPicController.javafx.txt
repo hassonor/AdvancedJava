@@ -34,11 +34,11 @@ public class GuessPicController{
 
 	@FXML
 	void onStopPressed(ActionEvent event){
-		double precentage = (double)success/numOfPictures * 100;
+		double percentage = (double)success/numOfPictures * 100;
 		Alert alert = new Alert(Alert.AlertType.INFORMATION);
-		alert.setTitle("Game Over. Score: " + precentage);
-		alert.setHeaderText("Game Over. Score: " + precentage);
-		alert.setContentText("Game Over. Score: " + precentage);
+		alert.setTitle("Game Over. Score: " + percentage);
+		alert.setHeaderText("Game Over. Score: " + percentage);
+		alert.setContentText("Game Over. Score: " + percentage);
 		alert.showAndWait();
 	}
 

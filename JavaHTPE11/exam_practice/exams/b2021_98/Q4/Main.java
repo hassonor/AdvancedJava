@@ -21,7 +21,7 @@ public class Main {
             }
         }
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 1; i < 4; i++) {
             System.out.println("Num of use resource " + i + " :" + rp.getUseCount(i + 1));
         }
 

@@ -1,4 +1,4 @@
-package JavaHTPE11.exam_practice.review.concurrency.T9;
+package JavaHTPE11.exam_practice.exams.a2018_83.Q4;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,10 +22,11 @@ public class Main {
         }
 
         for (int i = 1; i < 4; i++) {
-            System.out.println(rp.getUseCount(i));
+            System.out.println("Resource " + i + ":" + rp.getUseCount(i));
         }
 
 
     }
 
 }
+

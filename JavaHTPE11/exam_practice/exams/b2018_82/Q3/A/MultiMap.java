@@ -1,4 +1,4 @@
-package JavaHTPE11.exam_practice.exams.b2018_82.Q3;
+package JavaHTPE11.exam_practice.exams.b2018_82.Q3.A;
 
 import java.util.*;
 

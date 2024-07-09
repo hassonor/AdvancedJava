@@ -1,0 +1,61 @@
+package com.example.mb;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.geometry.Point2D;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import java.util.ArrayList;
+
+public class DrawRectsController{
+    @FXML
+    private Canvas canv;
+
+    private GraphicsContext gc;
+
+    private ArrayList<Rectangle> rects;
+
+    private final int SIZE =10;
+
+
+    public void initialize(){
+        gc = canv.getGraphicsContext2D();
+        rects = new ArrayList<Rectangle>();
+    }
+
+
+    private void drawRectangles(){
+        gc.clearRect(0,0,canv.getWidth(),canv.getHeight());
+        for(Rectangle r: rects){
+            gc.fillRect(r.getX(),r.getY(),SIZE,SIZE);
+        }
+    }
+
+    @FXML
+    void pressOnCanvas(MouseEvent event){
+        boolean del = false;
+
+        for(Rectangle r: rects){
+            if(r.contains(new Point2D(event.getX(),event.getY()))){
+                rects.remove(r);
+                del = true;
+                break;
+            }
+        }
+
+        if(!del){
+            rects.add(new Rectangle(event.getX(),event.getY(),SIZE,SIZE));
+        }
+        drawRectangles();
+    }
+
+    @FXML
+    void clearPressed(ActionEvent event){
+        rects = new ArrayList<Rectangle>();
+        gc.clearRect(0,0,canv.getWidth(),canv.getHeight());
+    }
+
+}

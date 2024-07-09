@@ -1,0 +1,86 @@
+import javafx.fxml.FXML;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Alert;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Rectangle;
+import javafx.geometry.Point2D;
+import java.util.ArrayList;
+import java.util.Random;
+
+public class RandomRectsController {
+    @FXML
+    private Canvas bottomCanv;
+
+    @FXML
+    private Canvas upperCanv;
+
+    private GraphicsContext gcUpper;
+    private GraphicsContext gcBottom;
+    private final int SIZE = 10;
+    private final int BOUND = 100;
+    private ArrayList<Rectangle> rectsUp, rectsDown;
+
+    public void initialize() {
+        gcUpper = upperCanv.getGraphicsContext2D();
+        gcBottom = bottomCanv.getGraphicsContext2D();
+        rectsUp = new ArrayList<>();
+        rectsDown = new ArrayList<>(); // Corrected initialization
+        generateRects();
+        strokeRects();
+    }
+
+    @FXML
+    void pressed(MouseEvent event) {
+        Rectangle smallest = getSmallest();
+        if (smallest != null && smallest.contains(new Point2D(event.getX(), event.getY()))) {
+            rectsDown.add(smallest);
+            removeSmallest(smallest);
+            strokeRects();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Selection Error");
+            alert.setContentText("No rectangle contains the clicked point.");
+            alert.showAndWait();
+        }
+    }
+
+    private void generateRects() {
+        Random r = new Random();
+        for (int i = 0; i < SIZE; i++) {
+            int randomSize = r.nextInt(91) + 10;
+            int x = r.nextInt((int) upperCanv.getWidth() - BOUND);
+            int y = r.nextInt((int) upperCanv.getHeight() - BOUND);
+            rectsUp.add(new Rectangle(x, y, randomSize, randomSize));
+        }
+    }
+
+    private void strokeRects() {
+        gcUpper.clearRect(0, 0, upperCanv.getWidth(), upperCanv.getHeight());
+        gcBottom.clearRect(0, 0, bottomCanv.getWidth(), bottomCanv.getHeight());
+
+        for (Rectangle r : rectsUp) {
+            gcUpper.strokeRect(r.getX(), r.getY(), r.getWidth(), r.getHeight());
+        }
+
+        for (Rectangle r : rectsDown) {
+            gcBottom.strokeRect(0, 0, r.getWidth(), r.getHeight());
+        }
+    }
+
+    private Rectangle getSmallest() {
+        if (rectsUp.isEmpty()) return null;
+        Rectangle smallest = rectsUp.get(0);
+        for (Rectangle r : rectsUp) {
+            if (r.getWidth() < smallest.getWidth()) {
+                smallest = r;
+            }
+        }
+        return smallest;
+    }
+
+    private void removeSmallest(Rectangle smallest) {
+        rectsUp.remove(smallest);
+    }
+}

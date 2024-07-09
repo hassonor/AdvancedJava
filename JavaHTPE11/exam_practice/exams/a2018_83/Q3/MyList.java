@@ -1,4 +1,6 @@
-package JavaHTPE11.exam_practice.review.generics.T9;
+package JavaHTPE11.exam_practice.exams.a2018_83.Q3;
+
+import JavaHTPE11.exam_practice.review.generics.T9.A;
 
 import java.util.Collection;
 import java.util.Iterator;

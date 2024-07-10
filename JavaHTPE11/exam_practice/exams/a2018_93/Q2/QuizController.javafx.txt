@@ -1,0 +1,82 @@
+package com.example.mb;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.text.Text;
+import javafx.event.ActionEvent;
+import javafx.scene.layout.GridPane;
+
+
+
+public class QuizController {
+    private int total = 0;
+    private int success = 0;
+    private final int NUM_OF_QUESTIONS = 5;
+    private QuestionRepository qr;
+    private Question currentQuestion;
+    private Button[] buttons = new Button[4];
+
+    @FXML
+    private GridPane grid;
+
+    @FXML
+    private Text text;
+
+    @FXML
+    public void initialize() {
+        qr = new QuestionRepository();
+        createButtons();
+        setNewQuestion();
+    }
+
+    private void createButtons() {
+        for (int i = 0; i < 4; i++) {
+            buttons[i] = new Button();
+            buttons[i].setOnAction(this::handleButtonAction);
+            grid.add(buttons[i], i % 2, i / 2);
+        }
+    }
+
+    private void setNewQuestion() {
+        if (total < NUM_OF_QUESTIONS) {
+            total++;
+            currentQuestion = qr.getQuestion();
+            text.setText(currentQuestion.getWord());
+            String[] options = currentQuestion.getOptions();
+            for (int i = 0; i < buttons.length; i++) {
+                buttons[i].setText(options[i]);
+            }
+        } else {
+            endGame();
+        }
+    }
+
+    private void endGame() {
+        double percentage = ((double) success / NUM_OF_QUESTIONS) * 100;
+        showPopUp("Game Over: Total Percentage: " + percentage);
+    }
+
+    private void checkAns(String text) {
+        if (text.equals(currentQuestion.getTranslation())) {
+            success++;
+            showPopUp("Success");
+        } else {
+            showPopUp("Failed");
+        }
+        setNewQuestion();
+    }
+
+    private void showPopUp(String text) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Quiz Game");
+        alert.setHeaderText(null);
+        alert.setContentText(text);
+        alert.showAndWait();
+    }
+
+    private void handleButtonAction(ActionEvent event) {
+        Button clickedButton = (Button) event.getSource();
+        checkAns(clickedButton.getText());
+    }
+}

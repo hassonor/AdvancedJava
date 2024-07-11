@@ -6,11 +6,11 @@ class NumberThread extends Thread {
     private boolean checked = false;
     private SharedCounter sharedCounter;
 
-    private int index; //debug
+//    private int index; //debug
 
 
-    public NumberThread(int index, SharedCounter sharedCounter) {
-        this.index = index;//debug
+    public NumberThread(SharedCounter sharedCounter) {
+//        this.index = index;//debug
         this.sharedCounter = sharedCounter;
         //val = (int) (Math.random()*100);
     }
@@ -29,7 +29,7 @@ class NumberThread extends Thread {
             val = newVal;
         sharedCounter.increase();
         sharedCounter.waitUntilPrint();
-        System.out.println("finished " + index);//debug
+//        System.out.println("finished " + index);//debug
 
     }
 

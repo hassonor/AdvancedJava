@@ -1,0 +1,71 @@
+import javafx.application.Platform;
+import javafx.fxml.FXML;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Alert;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.geometry.Point2D;
+
+import java.util.Random;
+
+public class RandomRectangleController extends Thread {
+    private final int n = 3;
+    private final int SIZE = 100;
+    private final int BOUND = 10;
+    private int count, success, fails;
+    private int ms = 1000;
+    private GraphicsContext gc;
+    private Rectangle r;
+
+    @FXML
+    private Canvas canv;
+
+    public void initialize() {
+        gc = canv.getGraphicsContext2D();
+        start();
+    }
+
+    @Override
+    public void run() {
+        while (count != n) {
+            generateRectangle();
+            gc.setStroke(Color.BLACK);
+            gc.strokeRect(r.getX(), r.getY(), r.getWidth(), r.getHeight());
+            count++;
+            try {
+                sleep(ms);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        Platform.runLater(this::endOfGame);
+    }
+
+    private void generateRectangle() {
+        Random rand = new Random();
+        gc.clearRect(0, 0, canv.getWidth(), canv.getHeight());
+        int x = rand.nextInt((int) canv.getWidth() - BOUND);
+        int y = rand.nextInt((int) canv.getHeight() - BOUND);
+        r = new Rectangle(x, y, SIZE, SIZE);
+    }
+
+    private void endOfGame() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        int score = (int) ((Math.pow(success, 2) * 2) - fails);
+        alert.setTitle("Game Over. Score: " + score);
+        alert.setHeaderText("Game Over. Score: " + score);
+        alert.setContentText("Game Over. Score: " + score);
+        alert.showAndWait();
+    }
+
+    @FXML
+    void clickOnCanv(MouseEvent event) {
+        if (r.contains(new Point2D(event.getX(), event.getY()))) {
+            success++;
+        } else {
+            fails++;
+        }
+    }
+}

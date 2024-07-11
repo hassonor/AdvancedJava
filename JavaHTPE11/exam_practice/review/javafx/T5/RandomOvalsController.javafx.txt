@@ -1,0 +1,89 @@
+package com.example.mb;
+
+import javafx.application.Platform;
+import javafx.fxml.FXML;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Alert;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.geometry.Point2D;
+
+import java.util.Random;
+
+import javafx.application.Platform;
+
+import javafx.scene.shape.Ellipse;
+
+public class RandomOvalsController extends Thread {
+    private final int n = 3;
+    private final int SIZE = 100;
+    private final int BOUND = 10;
+    private int count, success, fails;
+    private int ms = 1000;
+    private GraphicsContext gc;
+    private Ellipse oval;
+
+    @FXML
+    private Canvas canv;
+
+    public void initialize() {
+        gc = canv.getGraphicsContext2D();
+        startNewGame();
+    }
+
+    private void startNewGame(){
+        count = 0;
+        success = 0;
+        fails = 0;
+        if (isAlive()) {
+            interrupt();
+        }
+        Thread gameThread = new Thread(this);
+        gameThread.start();
+    }
+
+    @Override
+    public void run() {
+        while (count != n) {
+            generateOval();
+            gc.setStroke(Color.BLACK);
+            gc.strokeOval(oval.getCenterX() - oval.getRadiusX(), oval.getCenterY() - oval.getRadiusY(), oval.getRadiusX() * 2, oval.getRadiusY() * 2);
+            count++;
+            try {
+                sleep(ms);
+            } catch (InterruptedException e) {
+                return;
+            }
+        }
+        Platform.runLater(this::endOfGame);
+    }
+
+    private void generateOval() {
+        Random rand = new Random();
+        gc.clearRect(0, 0, canv.getWidth(), canv.getHeight());
+        int x = rand.nextInt((int) canv.getWidth() - BOUND);
+        int y = rand.nextInt((int) canv.getHeight() - BOUND);
+        oval = new Ellipse(x, y, SIZE / 2.0, SIZE / 2.0);
+    }
+
+    private void endOfGame() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        int score = (int) ((Math.pow(success, 2) * 2) - fails);
+        alert.setTitle("Game Over. Score: " + score);
+        alert.setHeaderText("Game Over. Score: " + score);
+        alert.setContentText("Game Over. Score: " + score);
+        alert.showAndWait();
+        Platform.runLater(this::startNewGame);
+    }
+
+    @FXML
+    void clickOnCanv(MouseEvent event) {
+        if (oval.contains(new Point2D(event.getX(), event.getY()))) {
+            success++;
+        } else {
+            fails++;
+        }
+    }
+}

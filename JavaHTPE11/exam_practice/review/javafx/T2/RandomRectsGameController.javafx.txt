@@ -1,3 +1,4 @@
+package com.example.mb;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -64,12 +65,16 @@ public class RandomRectsGameController {
     }
 
     private void endGame() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Game Over");
-        alert.setHeaderText("Game Over, total Fails: " + fails);
-        alert.setContentText("Game Over, total Fails: " + fails);
-        alert.showAndWait();
+        showPopUp("Game Over, total Fails: " + fails);
         startNewGame();
+    }
+
+    private void showPopUp(String text){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(text);
+        alert.setHeaderText(text);
+        alert.setContentText(text);
+        alert.showAndWait();
     }
 
     @FXML
@@ -84,6 +89,7 @@ public class RandomRectsGameController {
             strokeRects();
         } else {
             fails++;
+            showPopUp("Not the smallest Rectangle");
         }
     }
 }

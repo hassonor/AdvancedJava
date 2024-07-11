@@ -1,0 +1,89 @@
+import javafx.fxml.FXML;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Alert;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Rectangle;
+import javafx.geometry.Point2D;
+
+import java.util.ArrayList;
+import java.util.Random;
+
+public class RandomRectsGameController {
+    private final int SIZE = 10;
+    private final int BOUND = 100;
+    private int fails = 0;
+    private ArrayList<Rectangle> rects;
+    private GraphicsContext gc;
+
+    @FXML
+    private Canvas canv;
+
+    public void initialize() {
+        gc = canv.getGraphicsContext2D();
+        startNewGame();
+    }
+
+    private void startNewGame() {
+        fails = 0;
+        rects = new ArrayList<>();
+        generateRects();
+        strokeRects();
+    }
+
+    private void generateRects() {
+        Random r = new Random();
+        for (int i = 0; i < SIZE; i++) {
+            int randomSize = r.nextInt(91) + 10;
+            int x = r.nextInt((int) canv.getWidth() - BOUND);
+            int y = r.nextInt((int) canv.getHeight() - BOUND);
+            rects.add(new Rectangle(x, y, randomSize, randomSize));
+        }
+    }
+
+    private void strokeRects() {
+        gc.clearRect(0, 0, canv.getWidth(), canv.getHeight());
+        for (Rectangle r : rects) {
+            gc.strokeRect(r.getX(), r.getY(), r.getWidth(), r.getHeight());
+        }
+    }
+
+    private Rectangle getSmallest() {
+        if (rects.isEmpty()) return null;
+        Rectangle smallest = rects.get(0);
+        for (Rectangle r : rects) {
+            if (r.getWidth() < smallest.getWidth()) {
+                smallest = r;
+            }
+        }
+        return smallest;
+    }
+
+    private void removeSmallest(Rectangle smallest) {
+        rects.remove(smallest);
+    }
+
+    private void endGame() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Game Over");
+        alert.setHeaderText("Game Over, total Fails: " + fails);
+        alert.setContentText("Game Over, total Fails: " + fails);
+        alert.showAndWait();
+        startNewGame();
+    }
+
+    @FXML
+    void pressed(MouseEvent event) {
+        Rectangle smallest = getSmallest();
+        if (smallest != null && smallest.contains(new Point2D(event.getX(), event.getY()))) {
+            removeSmallest(smallest);
+            if (rects.isEmpty()) {
+                endGame();
+                return;
+            }
+            strokeRects();
+        } else {
+            fails++;
+        }
+    }
+}

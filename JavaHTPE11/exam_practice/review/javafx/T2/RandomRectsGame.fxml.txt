@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="your.package.RandomRectsGameController">
+    <Canvas fx:id="canv" width="400" height="400" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" onMouseClicked="#pressed"/>
+</AnchorPane>

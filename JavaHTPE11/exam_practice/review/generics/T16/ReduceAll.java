@@ -1,12 +1,13 @@
-package JavaHTPE11.exam_practice.exams.b2020_73.Q3;
+package JavaHTPE11.exam_practice.review.generics.T16;
 
 import JavaHTPE11.exam_practice.generics.testQuestion3.a.NonReduceable;
 
 import java.util.ArrayList;
 
-public class Main {
+public class ReduceAll {
     public static <T extends Reduceable<T>> ArrayList<T> reduceAll(ArrayList<T> arr) {
-        ArrayList<T> ans = new ArrayList<T>();
+        ArrayList<T> arr2 = new ArrayList<T>();
+
         for (T item : arr) {
             while (true) {
                 try {
@@ -15,9 +16,10 @@ public class Main {
                     break;
                 }
             }
-            ans.add(item);
+            arr2.add(item);
         }
+        return arr2;
 
-        return ans;
     }
 }
+

@@ -17,7 +17,4 @@ public class Cinema extends Building {
         return places - ((Cinema) b).places;
     }
 
-    public int getPlaces() {
-        return places;
-    }
 }

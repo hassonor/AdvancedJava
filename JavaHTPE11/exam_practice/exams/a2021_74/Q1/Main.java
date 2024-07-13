@@ -7,18 +7,20 @@ public class Main {
         ArrayList<Building> arr = new ArrayList<Building>();
         arr.add(new Building(2, 3, 4));
         arr.add(new Cinema(2, 3, 4, 100));
+        arr.add(new Cinema(2, 3, 4, 233));
     }
 
     private static Cinema maxCinema(ArrayList<Building> arr) {
-        int maxPlaces = -1;
         Cinema c = null;
 
         for (Building b : arr) {
             if (b instanceof Cinema) {
                 Cinema temp = (Cinema) b;
-                if (temp.getPlaces() > maxPlaces) {
-                    maxPlaces = temp.getPlaces();
+                if (c == null)
                     c = temp;
+                else {
+                    if (c.compareTo(temp) < 0)
+                        c = temp;
                 }
             }
         }

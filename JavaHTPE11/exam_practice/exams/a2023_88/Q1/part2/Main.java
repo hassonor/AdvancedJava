@@ -2,7 +2,7 @@ package JavaHTPE11.exam_practice.exams.a2023_88.Q1.part2;
 
 public class Main {
     public static void main(String[] args) {
-        TypeB obj = new TypeB() {
+        Worker w = new TypeB() {
             @Override
             public void actionB() {
                 System.out.println("actionB");
@@ -19,8 +19,9 @@ public class Main {
             }
         };
 
+
         try {
-            work(obj);
+            work((TypeA) w);
         } catch (Exception e) {
             e.printStackTrace();
         }

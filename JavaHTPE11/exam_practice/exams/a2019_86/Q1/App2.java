@@ -9,8 +9,10 @@ public class App2 extends App1 {
         super();
         if (n < 0)
             throw new IllegalDataException();
-        
-        super.step(n);
+
+        for (int i = 0; i < n; i++) {
+            super.apply();
+        }
         this.st = st;
     }
 

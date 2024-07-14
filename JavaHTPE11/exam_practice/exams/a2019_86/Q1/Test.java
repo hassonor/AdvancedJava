@@ -1,5 +1,7 @@
 package JavaHTPE11.exam_practice.exams.a2019_86.Q1;
 
+import JavaHTPE11.ClassLesson10.testQuestion3_generics.a.IllegalDataException;
+
 public class Test {
     public static void main(String[] args) {
 //        Applyable a = new App1();
@@ -27,12 +29,13 @@ public class Test {
 //        a1.step(len);
 //        System.out.println("a1=" + a1); // a1=
 //
-//        try {
-//            App2 a3 = new App2(90, "abcd");
-//            System.out.println(a3);
-//            System.out.println(a3.getNum());
-//        } catch (IllegalDataException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            App2 a3 = new App2(90, "abcd");
+            a3.apply();
+            System.out.println(a3);
+            System.out.println(a3.getNum());
+        } catch (IllegalDataException e) {
+            e.printStackTrace();
+        }
     }
 }

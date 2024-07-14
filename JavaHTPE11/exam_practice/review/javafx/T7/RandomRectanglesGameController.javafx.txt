@@ -1,0 +1,80 @@
+package com.example.mb;
+
+import javafx.fxml.FXML;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Alert;
+import javafx.scene.input.MouseEvent;
+import javafx.event.ActionEvent;
+import javafx.geometry.Point2D;
+import javafx.scene.shape.Rectangle;
+
+import java.util.ArrayList;
+import java.util.Random;
+
+public class RandomRectanglesGameController {
+
+    @FXML
+    private Canvas canv;
+
+    private GraphicsContext gc;
+    private long startTime;
+    private final int SIZE = 10;
+    private ArrayList<Rectangle> rects;
+
+    public void initialize() {
+        gc = canv.getGraphicsContext2D();
+        rects = new ArrayList<>();
+    }
+
+    @FXML
+    void ongoPressed(ActionEvent event) {
+        startNewGame();
+    }
+
+    @FXML
+    void onCanvMousePressed(MouseEvent event) {
+        for (Rectangle r : rects) {
+            if (r.contains(new Point2D(event.getX(), event.getY()))) {
+                rects.remove(r);
+                strokeRectangles();
+                if (rects.isEmpty()) {
+                    endGame();
+                }
+                break;
+            }
+        }
+    }
+
+    private void startNewGame() {
+        startTime = System.currentTimeMillis();
+        rects.clear();
+        createRectangles();
+        strokeRectangles();
+    }
+
+    private void createRectangles() {
+        Random r = new Random();
+        for (int i = 0; i < SIZE; i++) {
+            int x = r.nextInt((int) canv.getWidth() - SIZE);
+            int y = r.nextInt((int) canv.getHeight() - SIZE);
+            rects.add(new Rectangle(x, y, SIZE, SIZE));
+        }
+    }
+
+    private void strokeRectangles() {
+        gc.clearRect(0, 0, canv.getWidth(), canv.getHeight());
+        for (Rectangle r : rects) {
+            gc.strokeRect(r.getX(), r.getY(), r.getWidth(), r.getHeight());
+        }
+    }
+
+    private void endGame() {
+        long totalTime = System.currentTimeMillis() - startTime;
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("End game, totalGameTime: " + totalTime);
+        alert.setHeaderText("End game, totalGameTime: " + totalTime);
+        alert.setContentText("End game, totalGameTime: " + totalTime);
+        alert.showAndWait();
+    }
+}

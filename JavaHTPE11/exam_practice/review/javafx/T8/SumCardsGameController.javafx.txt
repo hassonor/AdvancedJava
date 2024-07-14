@@ -1,0 +1,56 @@
+package com.example.mb;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import java.util.Random;
+
+public class SumCardsGameController {
+    private int changeNum = 2;
+    private int sum;
+
+    @FXML
+    private Button bt1;
+
+    @FXML
+    private Button bt2;
+
+    @FXML
+    private Button bt3;
+
+    private Random r = new Random();
+
+    @FXML
+    void onChangePressed(ActionEvent event){
+        setButtonText();
+        changeNum--;
+        if(changeNum == 0)
+            endGame();
+    }
+
+    @FXML
+    void onStopPressed(ActionEvent event){
+        endGame();
+    }
+
+    public void initialize(){
+        setButtonText();
+    }
+
+    private void setButtonText(){
+        bt1.setText("" + (r.nextInt(100) + 1));
+        bt2.setText("" + (r.nextInt(100) + 1));
+        bt3.setText("" + (r.nextInt(100) + 1));
+    }
+
+    private void endGame(){
+        sum = Integer.parseInt(bt1.getText()) + Integer.parseInt(bt2.getText()) + Integer.parseInt(bt3.getText());
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Score: " + sum);
+        alert.setHeaderText("Score: " + sum);
+        alert.setContentText("Score: " + sum);
+        alert.showAndWait();
+        changeNum = 2;
+    }
+}

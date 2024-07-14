@@ -1,0 +1,48 @@
+ class Message{
+	private int x,y;
+	private String text;
+
+	public Message(int x, int y, String text){
+		this.x = x;
+		this.y = y;
+		this.text = text;
+	}
+
+	// getters and setters
+}
+
+public class BoardController{
+	@FXML
+	private Canvas canv;
+	private LinkedList<Message> msgs;
+	private GraphicsContext gc;
+
+	public void initialize(){
+		gc = canv.getGraphicsConext2D();
+		msgs = new LinkedList<Messgae>();\
+	}
+
+	private void drawMessage(){
+		gc.clearRect(0,0,canv.getWidth(),canv.getHeight());
+		for(Message m: msgs){
+			gc.strokeText(m.getText(),m.getX(),m.getY());
+		}
+	}
+
+	@FXML
+	void pressed(MouseEvent event){
+		boolean del = false;
+		for(Message m: msgs){
+		if(Math.abs(event.getX()-m.getX())<=10&& Math.abs(event.getY()-m.getY)<=10){
+			del = true;
+			msgs.remove(m);
+			break;
+		    }
+		}
+		if(!del){
+			String str = JOptionPane.showInputDialog("Enter Message");
+			msgs.add(new Message((int)event.getX(),(int)event.getY(),str);
+		}
+		drawMessage();
+	}
+}

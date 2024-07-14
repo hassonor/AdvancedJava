@@ -7,12 +7,12 @@ public class C extends A {
     private static final Random r = new Random();
 
     public C() {
-        super(r.nextInt(11));
+        super((new Random()).nextInt(11));
         num2 = (r.nextInt(11));
     }
 
-    public boolean foo(C c) {
+    public boolean foo(A a) {
         System.out.println("C foo");
-        return (c instanceof C) && c.num2 == num2;
+        return (a instanceof C) && ((C) a).num2 == num2;
     }
 }

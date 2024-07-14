@@ -1,0 +1,47 @@
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.event.ActionEvent;
+
+public class GuessPicController {
+    private int numOfPic, success;
+    private String currentLabel;
+
+    @FXML
+    private ImageView img;
+
+    @FXML
+    private TextField textF;
+
+    @FXML
+    void onCheckPressed(ActionEvent event) {
+        String ans = textF.getText().toLowerCase();
+        if (ans.equals(currentLabel.toLowerCase())) {
+            success++;
+        }
+        textF.setText("");
+        showPicture();
+    }
+
+    @FXML
+    void onStopPressed(ActionEvent event) {
+        double percentage = (double) success / numOfPic * 100;
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Game Over - Score: " + percentage);
+        alert.setHeaderText("Game Over - Score: " + percentage);
+        alert.setContentText("Game Over - Score: " + percentage);
+        alert.showAndWait();
+    }
+
+    public void initialize() {
+        showPicture();
+    }
+
+    private void showPicture() {
+        Picture pic = new Picture();
+        img.setImage(pic.getImage());
+        currentLabel = pic.getText();
+        numOfPic++;
+    }
+}

@@ -13,7 +13,7 @@ public class Main {
 //        System.out.println(y2.foo(z1)); // A foo true
 //        System.out.println(z1.foo(z2)); // A foo true/false
 //        System.out.println(z1.foo(y1)); // C foo false
-//        System.out.println(z1.foo(z2)); // A foo true/false
+//        System.out.println(z1.foo(z2)); // C foo true/false
 //        System.out.println(z2.foo((C) y1)); ! Running Error
     }
 }

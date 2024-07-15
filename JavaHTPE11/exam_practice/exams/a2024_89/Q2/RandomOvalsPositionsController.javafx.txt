@@ -1,0 +1,62 @@
+package com.example.mb;
+
+
+import javafx.fxml.FXML;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.MouseEvent;
+import java.util.ArrayList;
+import java.util.Random;
+import javafx.application.Platform;
+
+public class RandomOvalsPositionsController extends Thread {
+    private final int SIZE = 10;
+    private final int BOUND = 10;
+    private final int ms = 200;
+    private GraphicsContext gc;
+    private final ArrayList<Oval> ovals = new ArrayList<>();
+
+    @FXML
+    private Canvas canv;
+
+    public void initialize() {
+        gc = canv.getGraphicsContext2D();
+        start();
+    }
+
+    public void run() {
+        while (true) {
+            createRandomOvals();
+            Platform.runLater(this::strokeOvals);
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void strokeOvals() {
+        gc.clearRect(0, 0, canv.getWidth(), canv.getHeight());
+        for (Oval o : ovals) {
+            gc.fillOval(o.getX(), o.getY(), SIZE, SIZE);
+        }
+    }
+
+    private void createRandomOvals() {
+        if (ovals.isEmpty()) return;
+        Random r = new Random();
+        for (Oval o : ovals) {
+            int x = r.nextInt((int) canv.getWidth() - BOUND);
+            int y = r.nextInt((int) canv.getHeight() - BOUND);
+            o.setX(x);
+            o.setY(y);
+        }
+    }
+
+    @FXML
+     void onPressed(MouseEvent event) {
+        ovals.add(new Oval((int) event.getX(), (int) event.getY(), SIZE));
+        Platform.runLater(this::strokeOvals);
+    }
+}

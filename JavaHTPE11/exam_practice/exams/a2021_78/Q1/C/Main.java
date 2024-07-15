@@ -14,11 +14,11 @@ public class Main {
         }
 
         for (B item : b) {
+            sum += item.getN();
             str += item.getText();
         }
 
-        str = sum + str;
 
-        return new B(str);
+        return new B(sum, str);
     }
 }

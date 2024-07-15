@@ -1,0 +1,64 @@
+package com.example.mb;
+
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+
+
+public class MoveBallWithButtonsController {
+    @FXML
+    private Canvas canv;
+
+    private double x, y;
+    private final int SIZE = 20, MOVE = 10;
+    private GraphicsContext gc;
+
+    public void initialize() {
+        gc = canv.getGraphicsContext2D();
+        x = canv.getWidth() / 2.0;
+        y = canv.getHeight() / 2.0;
+        draw();
+    }
+
+    private void draw() {
+        gc.clearRect(0, 0, canv.getWidth(), canv.getHeight());
+        gc.fillOval(x, y, SIZE, SIZE);
+    }
+
+    @FXML
+    void leftPressed(ActionEvent e) {
+        x -= MOVE;
+        check();
+        draw();
+    }
+
+    @FXML
+    void rightPressed(ActionEvent e) {
+        x += MOVE;
+        check();
+        draw();
+    }
+
+    @FXML
+    void upPressed(ActionEvent e) {
+        y -= MOVE;
+        check();
+        draw();
+    }
+
+    @FXML
+    void downPressed(ActionEvent e) {
+        y += MOVE;
+        check();
+        draw();
+    }
+
+    private void check() {
+        if (x < 0 || y < 0 || x > canv.getWidth() - SIZE || y > canv.getHeight() - SIZE) {
+            x = canv.getWidth() / 2.0;
+            y = canv.getHeight() / 2.0;
+        }
+    }
+}
